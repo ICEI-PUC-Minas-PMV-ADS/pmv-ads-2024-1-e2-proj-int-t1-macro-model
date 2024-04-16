@@ -1,44 +1,59 @@
 # Especificações do Projeto
-
-<span style="color:red">Pré-requisitos: <a href="1-Documentação de Contexto.md"> Documentação de Contexto</a></span>
-
-Definição do problema e ideia de solução a partir da perspectiva do usuário. É composta pela definição do  diagrama de personas, histórias de usuários, requisitos funcionais e não funcionais além das restrições do projeto.
-
-Apresente uma visão geral do que será abordado nesta parte do documento, enumerando as técnicas e/ou ferramentas utilizadas para realizar a especificações do projeto
+| Perfis de Administrador | Perfil de Cliente |
+|-------------------------|--------------------|
+| Usuário responsável pelo gerenciamento e abastecimento do site. | Usuário que irá utilizar o conteúdo e a interface como consumidor.|
+| Ter conhecimento sobre necessidades do site através de chamados abertos usuários no site. | Obter acesso fácil e rápido a informações sobre os alimentos catalogados os itens com informações personalizadas para preservar a integridade de consumo. |
+| Abastecer a página inicial com informações de notícias atualizadas, verificadas e que promovam interesse pela plataforma. | Ter acesso ao seu perfil próprio, onde consiga visualizar os alimentos catálogos de forma centralizada e intuitiva. |
 
 ## Personas
+As personas levantadas durante o processo de entendimento do problema são apresentadas nas tabelas que se seguem:
 
-Pedro Paulo tem 26 anos, é arquiteto recém-formado e autônomo. Pensa em se desenvolver profissionalmente através de um mestrado fora do país, pois adora viajar, é solteiro e sempre quis fazer um intercâmbio. Está buscando uma agência que o ajude a encontrar universidades na Europa que aceitem alunos estrangeiros.
+| Persona | 1 |
+---|---
+| <img src="img/Personas/Persona 1.jpg" width="150" height="150" /> | **Ana Santos** |
+| **Idade:** 28 **Profissão:** Atleta Profissional **Hobbies:** Alimentação e bem estar, caminhadas. | **Aplicativos:** Instagram, Apps bancários, Netflix, WhatsApp, Telegram. |
+| **Motivações:** Alcançar seu máximo potencial como atleta, melhorar seus tempos de corrida, prevenir lesões e manter um estado físico e mental ótimo. | **Preocupações:** Garantir que sua dieta forneça os nutrientes necessários para sustentar seu treinamento intenso e promover a recuperação muscular. |
+| Persona | 2 |
+| <img src="img/Personas/Persona 2.PNG" width="150" height="150" /> | **Carlos Lima** |
+| **Idade:** 35 **Profissão:** Engenheiro Mecânico **Hobbies:** Permacultura, Literatura e nutrição. | **Aplicativos:** Facebook, Aplicativos de bancos, Whatsapp. |
+| **Motivações:** Promover a saúde pessoal, reduzir o impacto ambiental de sua dieta e viver de acordo com seus valores éticos. | **Preocupações:** Garantir que os alimentos que consome sejam livres de ingredientes de origem animal e atendam às suas necessidades nutricionais. |
+| Persona | 3 |
+| <img src="img/Personas/Persona 3.jpg" width="150" height="150" /> | **Maria Oliveira** |
+|**Idade:** 40 **Profissão:** Assistente Administrativo **Hobbies:** Horta doméstica e Confeitaria | **Aplicativos:** Facebook, Instagram, Whatsapp, Aplicativos de bancos. |
+|**Motivações:** Promover a saúde e o bem-estar de sua família, oferecendo alimentos saudáveis e equilibrados que se encaixem em sua rotina agitada. | **Preocupações:** Garantir que sua família consuma uma dieta nutritiva, mesmo com uma agenda lotada. |
+| Persona | 4 |
+| <img src="img/Personas/Persona 4.jpg" width="150" height="150" /> | **João Silva** |
+| **Idade:** 20 **Profissão:** Garsom  **Hobbies:** Economia, cutivo de cogumelos | **Aplicativos:** Facebook, Instagram, Whatsapp, Aplicativos de bancos, youtube. | | **Motivações:** Maximizar seu potencial acadêmico, promover sua saúde e bem-estar e desenvolver hábitos alimentares saudáveis que o acompanhem ao longo da vida. | 
+ **Preocupações:** Garantir que sua dieta seja nutritiva e equilibrada, apesar das restrições de tempo e orçamento. |
+| Persona | 5 |
+| <img src="img/Personas/Persona 5.jpg" width="150" height="150" /> | **Larissa Mendes** |
+| **Idade:** 32 **Profissão:** Nutricionista  **Hobbies:** Nutrição, caminhada ao ar livre. | **Aplicativos:** Instagram, Skoob, Apps bancários, Netflix, WhatsApp, Telegram. | 
+|**Motivações:** Promover a saúde e o bem-estar de seus pacientes, fornecendo orientações nutricionais personalizadas que atendam às suas necessidades individuais.  | **Preocupações:** Garantir que suas recomendações nutricionais sejam baseadas em evidências científicas sólidas e dados precisos. |
+| Persona | 6 |
+| <img src="img/Personas/Persona 6.jpg" width="150" height="150" /> | **Pedro Oliveira** |
+| **Idade:** 28 **Profissão:** Cozinheiro  **Hobbies:** Culinária, nutrição e bem estar | **Aplicativos:** Instagram, Apps bancários, Netflix, WhatsApp, Telegram e youtube. |
+| **Motivações:** Promover sua saúde e bem-estar, experimentar novos sabores e ingredientes, e compartilhar suas descobertas com sua comunidade online. **Preocupações:** Garantir que sua dieta seja nutritiva, equilibrada e sustentável. |
 
-Enumere e detalhe as personas da sua solução. Para tanto, baseie-se tanto nos documentos disponibilizados na disciplina e/ou nos seguintes links:
-
-> **Links Úteis**:
-> - [Rock Content](https://rockcontent.com/blog/personas/)
-> - [Hotmart](https://blog.hotmart.com/pt-br/como-criar-persona-negocio/)
-> - [O que é persona?](https://resultadosdigitais.com.br/blog/persona-o-que-e/)
-> - [Persona x Público-alvo](https://flammo.com.br/blog/persona-e-publico-alvo-qual-a-diferenca/)
-> - [Mapa de Empatia](https://resultadosdigitais.com.br/blog/mapa-da-empatia/)
-> - [Mapa de Stalkeholders](https://www.racecomunicacao.com.br/blog/como-fazer-o-mapeamento-de-stakeholders/)
->
-Lembre-se que você deve ser enumerar e descrever precisamente e personalizada todos os clientes ideais que sua solução almeja.
 
 ## Histórias de Usuários
 
-Com base na análise das personas forma identificadas as seguintes histórias de usuários:
+Com base na análise das personas identificadas para o projeto, foram formuladas as seguintes histórias de usuários:
 
 |EU COMO... `PERSONA`| QUERO/PRECISO ... `FUNCIONALIDADE` |PARA ... `MOTIVO/VALOR`                 |
 |--------------------|------------------------------------|----------------------------------------|
-|Usuário do sistema  | Registrar minhas tarefas           | Não esquecer de fazê-las               |
-|Administrador       | Alterar permissões                 | Permitir que possam administrar contas |
+|Ana Santos | Pesquisar alimentos ricos em proteínas e carboidratos complexos.  | Me preparar para uma competição importante.  |
+|Ana Santos | Encontrar alimentos com alto teor de antioxidantes e anti-inflamatórios naturais que possam ajudar a reduzir a inflamação e promover a reparação muscular. | Garantir que estou me alimentando corretamente para ajudar na recuperação muscular.   |
+|Carlos Lima | Encontrar opções de alimentos ricos em proteínas vegetais que sejam convenientes e acessíveis. | Manter uma dieta vegetariana equilibrada que atenda às minhas necessidades nutricionais e promova saúde e bem-estar.   |
+|Carlos Lima | Descobrir novos alimentos de origem vegetal. | Utilizar em receitas criativas e ricas para variar minha alimentação e evitar monotonia. |
+|Maria Oliveira | Encontar alimentos que possam ser utilizados em refeições saudáveis e práticas | Organizar os ingredientes necessários para refeições e facilitar minhas idas ao supermercado. |
+|Maria Oliveira | Encontrar opções de lanches nutritivos e embaladas individualmente | Manter minha família alimentada de forma saudável, mesmo em meio à correria do dia a dia. |
+|João Silva | Alimentos que ajudem a manter minha concentração e energia. | Me manter alerta e focado durante longas sessões de estudo. |
+|João Silva | Encontrar opções de alimentos saudáveis que se encaixem na minha condição financeira.  | Manter a saúde e meu orçamento sob controle enquanto concentro nos estudos. |
+|Larissa Mendes | Me manter atualizada sobre as caracteristicas alimentares dos alimentos.  | Oferecer o melhor cuidado com meus pacientes. |
+|Larissa Mendes | Oferecer uma ferramenta de informação nutricional para meus pacientes.  | Que meus pacientes tenham acesso há informações sobre sua dieta.  |
+|Pedro Oliveira | verificar a composição nutricional de cada ingrediente e equilibrar os macronutrientes em minha receita.  | Garantir que estou usando ingredientes nutritivos.  |
+|Pedro Oliveira | Pesquisar informações detalhadas sobre superalimentos, incluindo sua composição nutricional e possíveis benefícios para a saúde.  | Expandir meu conhecimento sobre alimentos saudáveis e continuar a explorar novas opções para minhas receitas.  |
 
-Apresente aqui as histórias de usuário que são relevantes para o projeto de sua solução. As Histórias de Usuário consistem em uma ferramenta poderosa para a compreensão e elicitação dos requisitos funcionais e não funcionais da sua aplicação. Se possível, agrupe as histórias de usuário por contexto, para facilitar consultas recorrentes à essa parte do documento.
-
-> **Links Úteis**:
-> - [Histórias de usuários com exemplos e template](https://www.atlassian.com/br/agile/project-management/user-stories)
-> - [Como escrever boas histórias de usuário (User Stories)](https://medium.com/vertice/como-escrever-boas-users-stories-hist%C3%B3rias-de-usu%C3%A1rios-b29c75043fac)
-> - [User Stories: requisitos que humanos entendem](https://www.luiztools.com.br/post/user-stories-descricao-de-requisitos-que-humanos-entendem/)
-> - [Histórias de Usuários: mais exemplos](https://www.reqview.com/doc/user-stories-example.html)
-> - [9 Common User Story Mistakes](https://airfocus.com/blog/user-story-mistakes/)
 
 ## Requisitos
 
@@ -48,30 +63,34 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 |ID    | Descrição do Requisito  | Prioridade |
 |------|-----------------------------------------|----|
-|RF-001| A aplicação deve permitir que o usuário gerencie suas tarefas | ALTA | 
-|RF-002| A aplicação deve emitir um relatório de tarefas realizadas no mês   | MÉDIA |
+|RF-001| Na página inicial, o site deve permitir um cadastro de conta. | ALTA | 
+|RF-002| Na página inicial, o site deve permitir realizar o login.   | ALTA |
+|RF-003| A página inicial deve ter um botão no menu para a tela “Quem Somos”, que dará mais detalhes sobre o site e o grupo desenvolvedor.   | Baixa |
+|RF-004| No cadastro de novo usuário, o sistema deverá consultar a disponibilidade do nome de usuário desejado, para que não existam perfis com nomes de usuário repetidos.   | Alta |
+|RF-005| Todos os campos no cadastro e login devem ser obrigatórios.   | Alta |
+|RF-006| Na tela de Alteração de Banners, o perfil administrador deve conseguir fazer upload da imagem, escolher quantos imagens terão.   | MÉDIA |
+|RF-007| Todos os tipos de perfis após logados, na tela interna, terão um menu lateral esquerdo com as funções disponíveis, uma tela central onde serão apresentadas as telas internas, na parte superior esquerda deve ter a logo do site, na parte superior direita deve ter sobre o usuário logado: Foto; Nome de Usuário; Sair.   | MÉDIA |
+|RF-008| A tela alimentos deverá apresentar os botões: Filtrar por Ordem Alfabética.  | Alta |
+|RF-009| A tela de Criar Nova Pasta deverá ter os campos obrigatórios a preencher: Título da Pasta; Privacidade   | Alta |
+|RF-010| A tela de Alterar Foto deve ser apresentada ao clicar em Alterar Foto no menu esquerdo.   | Baixa |
+|RF-011| A tela de Adicionar Novo Item deverá ter os campos: Título do Item; Categoria; Inserir Imagem.   | Alta |
+|RF-012| A tela de Alterar Item deverá ter os campos: Título do Item; Categoria; Inserir Imagem.   | Alta |
+|RF-013| O botão de Excluir Item deverá excluir o item do card.   | MÉDIA  |
+|RF-014| A tela de Visualizar Item permitirá o usuário visualizar os campos: Imagem do item; Título do Item; Categoria   | MÉDIA |
 
 ### Requisitos não Funcionais
 
 |ID     | Descrição do Requisito  |Prioridade |
 |-------|-------------------------|----|
 |RNF-001| A aplicação deve ser responsiva | MÉDIA | 
-|RNF-002| A aplicação deve processar requisições do usuário em no máximo 3s |  BAIXA | 
+|RNF-002| Aplicação deve permitir meios de compartilhamento Web. |  ALTA | 
+|RNF-003| A aplicação deve ser compatível com os navegadores. Deve ser compatível com os principais navegadores do mercado: Google Chrome, Firefox e Microsoft Edge. | ALTA | 
+|RNF-004| A aplicação deve ter bom nível de contraste entre os elementos da tela. |  MÉDIA | 
+|RNF-005| A aplicação web deve possuir um bom desempenho de tempo. Estimativa: Processamento de telas em até 15 segundos. | MÉDIA | 
+|RNF-006| A aplicação deve ser responsiva, adaptando-se automaticamente a diferentes tamanhos de tela e resoluções, proporcionando uma boa experiência de usuário em dispositivos móveis. |  ALTA | 
+|RNF-007| A aplicação deve ser escalável, capaz de lidar com um aumento significativo no número de usuários e no volume de dados sem comprometer o desempenho. |  ALTA | 
+|RNF-008| A aplicação deve ser de fácil manutenção, com código bem organizado e documentado, facilitando futuras atualizações e correções de bugs. |  MÉDIA | 
 
-Com base nas Histórias de Usuário, enumere os requisitos da sua solução. Classifique esses requisitos em dois grupos:
-
-- [Requisitos Funcionais
- (RF)](https://pt.wikipedia.org/wiki/Requisito_funcional):
- correspondem a uma funcionalidade que deve estar presente na
-  plataforma (ex: cadastro de usuário).
-- [Requisitos Não Funcionais
-  (RNF)](https://pt.wikipedia.org/wiki/Requisito_n%C3%A3o_funcional):
-  correspondem a uma característica técnica, seja de usabilidade,
-  desempenho, confiabilidade, segurança ou outro (ex: suporte a
-  dispositivos iOS e Android).
-Lembre-se que cada requisito deve corresponder à uma e somente uma
-característica alvo da sua solução. Além disso, certifique-se de que
-todos os aspectos capturados nas Histórias de Usuário foram cobertos.
 
 ## Restrições
 
@@ -79,25 +98,18 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 |ID| Restrição                                             |
 |--|-------------------------------------------------------|
-|01| O projeto deverá ser entregue até o final do semestre |
-|02| Não pode ser desenvolvido um módulo de backend        |
+|RE-01| A aplicação deve ser entregue de forma plenamente funcional até 23/06/2024. |
+|RE-02| A aplicação deve ser desenvolvida exclusivamente pelos membros do grupo.|
+|RE-03| O aplicativo deve utilizar conhecimentos de SQL e Modelagem de Dados, Engenharia de Requisitos de Software, Programação Modular, Algoritmos e Estruturas de Dados, Desenvolvimento Web Back-End e Front-End e Fundamentos de Redes de Computadores.|
+|RE-04| A aplicação é responsável por garantir que o banco de dados esteja sempre preciso e atualizado, garantindo que todas as informações nele contidas reflitam com precisão as últimas mudanças e atualizações relevantes. Esta medida é crucial para assegurar que os usuários tenham acesso a dados confiáveis e atualizados, promovendo assim a eficácia e a utilidade da aplicação em fornecer informações precisas e relevantes. |
+|RE-05| A aplicação deve atender a todas as regulamentações e leis pertinentes ao setor e à localização geográfica em que opera. Isso pode incluir conformidade com leis de privacidade de dados, acessibilidade da web, padrões de segurança cibernética, entre outros. |
+|RE-06| A equipe do projeto deve deter o conhecimento necessário para o pleno desenvolvimento da aplicação.|
+|RE-07| A em desenvolvimento ...|
 
+## Gerenciamento de Projeto
+- A metodologia Scrum foi selecionada como a abordagem ágil do nosso projeto de desenvolvimento de aplicação web, tendo em vista os benefícios destacados no cotidiano do mercado da tecnologia. Tais benefícios incluem a definição clara dos resultados a serem alcançados, a imposição de um ritmo disciplinado de execução do trabalho, alocação precisa de papéis e responsabilidades (Scrum Owner, Scrum Master e Team), o empoderamento da equipe para enfrentar desafios, a distribuição colaborativa e compartilhada do conhecimento e a promoção de um ambiente propício à crítica construtiva das ideias. Estas razões solidificam a escolha do Scrum como a metodologia mais adequada para garantir o êxito do nosso projeto de aplicação web.
 
-Enumere as restrições à sua solução. Lembre-se de que as restrições geralmente limitam a solução candidata.
-
-> **Links Úteis**:
-> - [O que são Requisitos Funcionais e Requisitos Não Funcionais?](https://codificar.com.br/requisitos-funcionais-nao-funcionais/)
-> - [O que são requisitos funcionais e requisitos não funcionais?](https://analisederequisitos.com.br/requisitos-funcionais-e-requisitos-nao-funcionais-o-que-sao/)
 
 ## Diagrama de Casos de Uso
+![Captura_de_tela_2024-03-06_212317](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-macro-model/assets/104217381/44b656cb-df95-48ab-b309-1ecd4c8e84a5)
 
-O diagrama de casos de uso é o próximo passo após a elicitação de requisitos, que utiliza um modelo gráfico e uma tabela com as descrições sucintas dos casos de uso e dos atores. Ele contempla a fronteira do sistema e o detalhamento dos requisitos funcionais com a indicação dos atores, casos de uso e seus relacionamentos. 
-
-As referências abaixo irão auxiliá-lo na geração do artefato “Diagrama de Casos de Uso”.
-
-> **Links Úteis**:
-> - [Criando Casos de Uso](https://www.ibm.com/docs/pt-br/elm/6.0?topic=requirements-creating-use-cases)
-> - [Como Criar Diagrama de Caso de Uso: Tutorial Passo a Passo](https://gitmind.com/pt/fazer-diagrama-de-caso-uso.html/)
-> - [Lucidchart](https://www.lucidchart.com/)
-> - [Astah](https://astah.net/)
-> - [Diagrams](https://app.diagrams.net/)
