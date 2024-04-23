@@ -9,7 +9,7 @@ namespace Macro_Model.Models
     {
 		[Key]
 		[Display(Name = "Digite seu e-mail para login")]
-		public string Email { get; set; }
+		public string Cpf { get; set; }
 
         [Display(Name = "Digite sua senha")]
 		public string Senha { get; set; }

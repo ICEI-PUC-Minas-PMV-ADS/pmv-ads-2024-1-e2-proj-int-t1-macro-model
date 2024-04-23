@@ -1,7 +1,9 @@
 ﻿using System.Diagnostics;
+using System.Security.Claims;
 using Macro_Model.Interfaces;
 using Macro_Model.Models;
 using Macro_Model.Services;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,28 +21,38 @@ namespace Macro_Model.Controllers
 
 		public async Task<IActionResult> Usuario()
 		{
-			var dados = await _context.Cadastro.ToListAsync();
-
-			return View(dados);
+			return View(await _context.Cadastro.ToListAsync());
 		}
 
 
-		public IActionResult Cadastro()
+
+        public IActionResult Cadastro()
 		{
 			return View();
 		}
 
-		[HttpPost]
-		public async Task<IActionResult> Cadastro(Cadastro cadastro)
-		{
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+            return RedirectToAction("Login", "Login");
+        }
 
-			if (ModelState.IsValid)
+
+        [HttpPost]
+		//[ValidateAntiForgeryToken]
+		public async Task<IActionResult> Cadastro(/*[Bind("Cpf,Nome,E-mail,Senha")]*/ Cadastro cadastro)
+		{
+            
+
+            if (ModelState.IsValid)
 			{
+
+				cadastro.Senha = BCrypt.Net.BCrypt.HashPassword(cadastro.Senha);
 				_context.Cadastro.Add(cadastro);
 				await _context.SaveChangesAsync();
 				return RedirectToAction("Usuario");
 			}
-			return View(cadastro);
+			return View();
 		}
 
 
@@ -59,14 +71,15 @@ namespace Macro_Model.Controllers
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> Edit(string id, Cadastro cadastro)
+		public async Task<IActionResult> Edit(/*[Bind("Cpf,Nome,E-mail,Senha")]*/ string id, Cadastro cadastro)
 		{
 			if (id != cadastro.Cpf)
 				return NotFound();
 
 			if (ModelState.IsValid)
 			{
-				_context.Cadastro.Update(cadastro);
+                cadastro.Senha = BCrypt.Net.BCrypt.HashPassword(cadastro.Senha);
+                _context.Cadastro.Update(cadastro);
 				await _context.SaveChangesAsync();
 				return RedirectToAction("Usuario");
 			}

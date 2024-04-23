@@ -10,12 +10,14 @@ namespace Macro_Model.Models
         [Key]
         [Display(Name = "CPF ")]
         [Required(ErrorMessage = "Obrigatório informar CPF.")]
-        [MaxLength(11,  ErrorMessage = "Somente números.")]
-        public string Cpf {  get; set; }
-        [Display(Name ="Nome ")]
+        [MaxLength(11, ErrorMessage = "Somente números.")]
+        public string Cpf { get; set; }
+
+        [Display(Name = "Nome ")]
         [Required(ErrorMessage = "Obrigatório")]
         [MaxLength(50, ErrorMessage = "Máximo de 50 caracteres.")]
         public string Nome { get; set; }
+
         [Display(Name = "E-mail ")]
         [Required(ErrorMessage = "Obrigatório informar e-mail.")]
         [DataType(DataType.EmailAddress, ErrorMessage = "Informe um e-mail válido.")]
@@ -23,7 +25,22 @@ namespace Macro_Model.Models
 
         [Display(Name = "Senha ")]
         [Required(ErrorMessage = "Obrigatório informar uma senha.")]
-        [MaxLength(11,  ErrorMessage = "Somente números , máximo de 11 caracteres.")]
+        [MaxLength(200, ErrorMessage = "Somente números , máximo de 200 caracteres.")]
+        [DataType(DataType.Password)]
         public string Senha { get; set; }
+
+        //public ICollection<Produto> Produtos { get; set; }
+
+        //[Display(Name = "Perfil ")]
+        //public Perfil Perfil { get; set; }
+
+
     }
 }
+//public enum Perfil
+//{
+//    Admin,
+//    User
+//}
+
+

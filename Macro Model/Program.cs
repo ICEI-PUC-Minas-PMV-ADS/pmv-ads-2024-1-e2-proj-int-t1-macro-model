@@ -1,6 +1,7 @@
 using Macro_Model.Interfaces;
 using Macro_Model.Models;
 using Macro_Model.Repositories;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 namespace Macro_Model
@@ -19,6 +20,23 @@ namespace Macro_Model
             builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+            builder.Services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            }
+            );
+
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.AccessDeniedPath = "/Usuarios/AccessDenied/";
+                    options.LoginPath = "/Login/Login/";
+
+				});
+
+
+
             builder.Services.AddScoped<ICadastroRepository, CadastroRepository>();
 
             var app = builder.Build();
@@ -35,8 +53,8 @@ namespace Macro_Model
             app.UseStaticFiles();
 
             app.UseRouting();
-
-            app.UseAuthorization();
+			app.UseAuthentication();
+			app.UseAuthorization();
 
             app.MapControllerRoute(
             

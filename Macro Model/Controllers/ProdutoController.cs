@@ -17,9 +17,7 @@ namespace Macro_Model.Controllers
 
         public async Task<IActionResult> Lista()
         {
-            var dados = await _context.Produto.ToListAsync();
-
-            return View(dados);
+            return View(await _context.Produto.ToListAsync());
         }
 
         
@@ -30,7 +28,7 @@ namespace Macro_Model.Controllers
 		}
 
         [HttpPost]
-        public async Task<IActionResult> Produto(Produto produto)
+        public async Task<IActionResult> Produto([Bind("Id,Nome,Nutricional,Restricao")]Produto produto)
         {
 
             if (ModelState.IsValid)
