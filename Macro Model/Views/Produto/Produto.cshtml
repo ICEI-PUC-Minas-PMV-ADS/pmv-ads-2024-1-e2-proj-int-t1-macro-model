@@ -3,17 +3,17 @@
 	ViewData["Title"] = "Produto";
 }
 
-<h2>@ViewData["Title"]</h2>
+<h2 style="padding:20px 0px">@ViewData["Title"]</h2>
 
 <div class="row">
-	<div class="col-md-8">
+	<div class="col-md-8" style="padding:5px 0px">
 		<form asp-action="Produto">
 
 			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
 			<div class="form-group">
 				<label asp-for="Nome" class="control-label"></label>
-				<input asp-for="Nome" class="form-control" />
+				<input asp-for="Nome" class="form-control" placeholder="Nome" />
 			</div>
 
 			<div class="form-group">

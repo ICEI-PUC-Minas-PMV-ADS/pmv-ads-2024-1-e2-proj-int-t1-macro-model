@@ -30,7 +30,7 @@ namespace Macro_Model
             builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
                 {
-                    options.AccessDeniedPath = "/Usuarios/AccessDenied/";
+                    options.AccessDeniedPath = "/Cadastro/AccessDenied/";
                     options.LoginPath = "/Login/Login/";
 
 				});

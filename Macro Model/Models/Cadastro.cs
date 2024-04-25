@@ -1,6 +1,7 @@
 ﻿using System.Data.SqlClient;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Macro_Model.Models
 {
@@ -20,6 +21,7 @@ namespace Macro_Model.Models
 
         [Display(Name = "E-mail ")]
         [Required(ErrorMessage = "Obrigatório informar e-mail.")]
+       
         [DataType(DataType.EmailAddress, ErrorMessage = "Informe um e-mail válido.")]
         public string Email { get; set; }
 
@@ -29,18 +31,21 @@ namespace Macro_Model.Models
         [DataType(DataType.Password)]
         public string Senha { get; set; }
 
-        //public ICollection<Produto> Produtos { get; set; }
+        [Display(Name = "Perfil ")]
+        public Perfil Perfil { get; set; }
+        
+        public string produtoId { get; set; }
 
-        //[Display(Name = "Perfil ")]
-        //public Perfil Perfil { get; set; }
+        [ForeignKey("produtoId")]
+        public Produto Produto { get; set; }
 
 
     }
 }
-//public enum Perfil
-//{
-//    Admin,
-//    User
-//}
+public enum Perfil
+{
+    Admin,
+    User
+}
 
 

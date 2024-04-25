@@ -5,11 +5,11 @@
 	ViewData["Title"] = "Cadastro";
 }
 
-<h2>Insira seus dados para cadastro </h2>
+<h2 style="text-align:center;padding:30px 0px">Insira seus dados para cadastro </h2>
 </br>
-<div class="row">
-	<div class="col-md-4">
-		<form asp-action="Cadastro">
+<div class="row" style="display:flex;justify-content:center">
+	<div class="col-md-4" style="padding-bottom:30px">
+		<form asp-action="Cadastro" style="border:1px solid lightgray;padding:30px;border-radius:10%">
 				
 				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 				
@@ -35,12 +35,12 @@
 					<label asp-for="Senha" class="control-label"></label>
 					<input asp-for="Senha" class="form-control" />
 					<span asp-validation-for="Senha" class="text-danger"></span>
-			@* 	</div>
+				</div>
 					<div class="form-group">
 					<label asp-for="Perfil" class="control-label"></label>
 					<select asp-for="Perfil" class="form-control"asp-items="Html.GetEnumSelectList<Perfil>()"></select>
 					<span asp-validation-for="Perfil" class="text-danger"></span>
-				</div> *@
+				</div>
 				<br></br>
 				<div class="form-group">
 					<input type="submit" value="Cadastrar" class="btn btn-success"/>

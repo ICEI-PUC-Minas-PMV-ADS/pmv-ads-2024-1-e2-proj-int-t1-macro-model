@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Macro_Model.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240408213436_M01-CadastroPessoas")]
-    partial class M01CadastroPessoas
+    [Migration("20240425001422_M01-autentiocaoUsuario")]
+    partial class M01autentiocaoUsuario
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,10 +39,13 @@ namespace Macro_Model.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<int>("Perfil")
+                        .HasColumnType("int");
+
                     b.Property<string>("Senha")
                         .IsRequired()
-                        .HasMaxLength(11)
-                        .HasColumnType("nvarchar(11)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.HasKey("Cpf");
 
@@ -51,15 +54,59 @@ namespace Macro_Model.Migrations
 
             modelBuilder.Entity("Macro_Model.Models.Login", b =>
                 {
-                    b.Property<string>("Email")
+                    b.Property<string>("Cpf")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Senha")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Email");
+                    b.HasKey("Cpf");
 
                     b.ToTable("Login");
+                });
+
+            modelBuilder.Entity("Macro_Model.Models.Produto", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CadatroCpf")
+                        .HasColumnType("nvarchar(11)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Nutricional")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("Restricao")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CadatroCpf");
+
+                    b.ToTable("Produtos");
+                });
+
+            modelBuilder.Entity("Macro_Model.Models.Produto", b =>
+                {
+                    b.HasOne("Macro_Model.Models.Cadastro", "Cadatro")
+                        .WithMany("Produtos")
+                        .HasForeignKey("CadatroCpf");
+
+                    b.Navigation("Cadatro");
+                });
+
+            modelBuilder.Entity("Macro_Model.Models.Cadastro", b =>
+                {
+                    b.Navigation("Produtos");
                 });
 #pragma warning restore 612, 618
         }

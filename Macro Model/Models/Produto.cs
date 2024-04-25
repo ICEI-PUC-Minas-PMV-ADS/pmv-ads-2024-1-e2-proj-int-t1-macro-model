@@ -27,9 +27,7 @@ namespace Macro_Model.Models
 		[MaxLength(50, ErrorMessage = "Máximo de 50 caracteres.")]
 		public string Restricao { get; set; }
 
-
-        //[ForeignKey("CpfId")]
-        //public string CpfId { get; set; }
-
-	}
+        public ICollection<Cadastro> Cadastros { get; set; }
+        
+    }
 }

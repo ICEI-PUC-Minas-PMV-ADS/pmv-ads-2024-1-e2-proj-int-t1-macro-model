@@ -1,11 +1,12 @@
 ﻿using System.Diagnostics;
 using Macro_Model.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Macro_Model.Controllers
 {
-	
+    [Authorize(Roles ="Admin")]
 	public class ProdutoController : Controller
 	{
 		private readonly AppDbContext _context;

@@ -11,39 +11,42 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Macro Model</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" style="margin-left:15px">Macro Model</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse">
+                <div class="collapse navbar-collapse" style="height:80px;">
                     <ul class="navbar-nav mr-auto">
                         
-                        <li class="nav-item">
+                        <li class="nav-item" style="width:110px">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Cadastro" asp-action="Cadastro">Cadastre-se!</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Produto" asp-action="Produto">Produtos</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Cadastro" asp-action="Usuario">Usuarios</a>
-                        </li>
-                        <li class="nav-item">
+                        @if(User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item" >
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Cadastro" asp-action="Usuario">Usuarios</a>
+                            </li>
+                        }
+                        <li class="nav-item" style="width:200px">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Produto" asp-action="Lista">Produto Listados</a>
                         </li>
 
                     </ul>
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav" style="display:flex;justify-content:right;width:100%;margin-right:15px">
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <li class="nav-item">
+                            <li class="nav-item"  >
                                 Olá, @User.Identity.Name <a class="nav-link text-dark" asp-controller="Cadastro" asp-action="Logout">Sair</a>
                             </li>
                         }
                         else
                         {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Login" asp-action="Login">Login</a>
+                            <li class="nav-item" >
+                                <a class="nav-link text-dark" asp-controller="Cadastro" asp-action="Login">Login</a>
                             </li>
                         }
 
@@ -53,12 +56,12 @@
 
 
                     </br>
-                    <nav class="navbar navbar-light bg-light">
+                   @*  <nav class="navbar navbar-light bg-light">
                         <form class="form-inline">
                             <input class="form-control mr-sm-0" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
                             <button class="btn btn-outline-success my-0 my-sm-0" type="submit">Pesquisar</button>
                         </form>
-                    </nav>
+                    </nav> *@
                 </div>
                 
     

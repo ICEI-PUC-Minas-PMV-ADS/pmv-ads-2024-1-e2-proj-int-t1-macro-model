@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Macro_Model.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240422230941_M03-TestedeSenha")]
-    partial class M03TestedeSenha
+    [Migration("20240425015844_M03-autentiocaoUsuario")]
+    partial class M03autentiocaoUsuario
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,27 +39,22 @@ namespace Macro_Model.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<int>("Perfil")
+                        .HasColumnType("int");
+
                     b.Property<string>("Senha")
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.HasKey("Cpf");
-
-                    b.ToTable("Cadastro");
-                });
-
-            modelBuilder.Entity("Macro_Model.Models.Login", b =>
-                {
-                    b.Property<string>("Cpf")
+                    b.Property<string>("produtoId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Senha")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Cpf");
 
-                    b.ToTable("Login");
+                    b.HasIndex("produtoId");
+
+                    b.ToTable("Cadastro");
                 });
 
             modelBuilder.Entity("Macro_Model.Models.Produto", b =>
@@ -85,6 +80,20 @@ namespace Macro_Model.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Produtos");
+                });
+
+            modelBuilder.Entity("Macro_Model.Models.Cadastro", b =>
+                {
+                    b.HasOne("Macro_Model.Models.Produto", "Produto")
+                        .WithMany("Cadastros")
+                        .HasForeignKey("produtoId");
+
+                    b.Navigation("Produto");
+                });
+
+            modelBuilder.Entity("Macro_Model.Models.Produto", b =>
+                {
+                    b.Navigation("Cadastros");
                 });
 #pragma warning restore 612, 618
         }

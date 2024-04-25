@@ -4,14 +4,18 @@ using Macro_Model.Interfaces;
 using Macro_Model.Models;
 using Macro_Model.Services;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 
 namespace Macro_Model.Controllers
 {
-
-	public class CadastroController : Controller
+    [Authorize]
+    public class CadastroController : Controller
 	{
+
 		private readonly AppDbContext _context;
 
 		public CadastroController(AppDbContext context)
@@ -19,44 +23,109 @@ namespace Macro_Model.Controllers
 			_context = context;
 		}
 
-		public async Task<IActionResult> Usuario()
+        [Authorize("Admin")]
+        public async Task<IActionResult> Usuario()
 		{
 			return View(await _context.Cadastro.ToListAsync());
 		}
 
+        [AllowAnonymous]
+        public IActionResult Login()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> Login(Cadastro cadastro)
+        {
+
+            var dados = await _context.Cadastro.FirstOrDefaultAsync(c => c.Cpf == cadastro.Cpf || c.Email == cadastro.Email);
+            //var dados = await _context.Cadastro.FindAsync(cadastro.Cpf);
+
+            if (dados == null)
+            {
+                ViewBag.Message = "Usuário e/ou senha inválidos! ";
+                return View();
+            }
 
 
-        public IActionResult Cadastro()
+            bool senhaCorreta = BCrypt.Net.BCrypt.Verify(cadastro.Senha, dados.Senha);
+
+            if (senhaCorreta)
+            {
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, dados.Nome),
+                    new Claim(ClaimTypes.NameIdentifier, dados.Cpf.ToString()),
+                    new Claim(ClaimTypes.Role, dados.Email.ToString())
+                };
+
+                var usuarioIdentididade = new ClaimsIdentity(claims, "login");
+                ClaimsPrincipal principal = new ClaimsPrincipal(usuarioIdentididade);
+
+                var propriedade = new AuthenticationProperties
+                {
+                    AllowRefresh = true,
+                    ExpiresUtc = DateTime.UtcNow.ToLocalTime().AddHours(8),
+                    IsPersistent = true,
+                };
+                await HttpContext.SignInAsync(principal, propriedade);
+                return Redirect("/");
+
+
+            }
+            else
+            {
+                ViewBag.Message = "Usuário e/ou senha inválidos!";
+            }
+
+            return View();
+        }
+
+
+      
+
+        [AllowAnonymous]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+            return RedirectToAction("Cadastro", "Login");
+        }
+
+		
+		public IActionResult AcessDenied()
 		{
 			return View();
 		}
 
-        public async Task<IActionResult> Logout()
+        [AllowAnonymous]
+        public IActionResult Cadastro()
         {
-            await HttpContext.SignOutAsync();
-            return RedirectToAction("Login", "Login");
+            return View();
         }
 
-
         [HttpPost]
-		//[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Cadastro(/*[Bind("Cpf,Nome,E-mail,Senha")]*/ Cadastro cadastro)
+        [AllowAnonymous]
+        public async Task<IActionResult> Cadastro([Bind("Cpf,Nome,E-mail,Senha,Perfil")] Cadastro cadastro)
 		{
-            
 
+	
+			
             if (ModelState.IsValid)
 			{
 
 				cadastro.Senha = BCrypt.Net.BCrypt.HashPassword(cadastro.Senha);
 				_context.Cadastro.Add(cadastro);
 				await _context.SaveChangesAsync();
-				return RedirectToAction("Usuario");
+				return RedirectToAction("Login");
 			}
 			return View();
 		}
 
-
-		public async Task<IActionResult> Edit(string? id)
+        
+        public async Task<IActionResult> Edit(string? id)
 		{
 
 			if (id == null)
@@ -71,7 +140,8 @@ namespace Macro_Model.Controllers
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> Edit(/*[Bind("Cpf,Nome,E-mail,Senha")]*/ string id, Cadastro cadastro)
+        
+        public async Task<IActionResult> Edit([Bind("Cpf,Nome,E-mail,Senha,Perfil")] string id, Cadastro cadastro)
 		{
 			if (id != cadastro.Cpf)
 				return NotFound();
@@ -85,8 +155,8 @@ namespace Macro_Model.Controllers
 			}
 			return View();
 		}
-
-		public async Task<IActionResult> Detalhe(string? id)
+        
+        public async Task<IActionResult> Detalhe(string? id)
 		{
 			if (id == null)
 				return NotFound();
@@ -100,6 +170,7 @@ namespace Macro_Model.Controllers
 
 		}
 
+        
         public async Task<IActionResult> Delete(string? id)
         {
             if (id == null)
@@ -115,7 +186,8 @@ namespace Macro_Model.Controllers
         }
 
 		[HttpPost, ActionName("Delete")]
-        public async Task<IActionResult> DeleteConfirmed(string? id)
+       
+        public async Task<IActionResult> DeleteConfirmed([Bind("Cpf,Nome,E-mail,Senha,Perfil")] string? id)
         {
             if (id == null)
                 return NotFound();
