@@ -20,12 +20,33 @@ namespace Macro_Model
 			builder.Services.AddDbContext<AppDbContext>(options =>
 				options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+<<<<<<< HEAD
 			builder.Services.Configure<CookiePolicyOptions>(options =>
 			{
 				options.CheckConsentNeeded = context => true;
 				options.MinimumSameSitePolicy = SameSiteMode.None;
 			}
 			);
+=======
+            builder.Services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            }
+            );
+
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.AccessDeniedPath = "/Cadastro/AccessDenied/";
+                    options.LoginPath = "/Login/Login/";
+
+				});
+
+
+
+            builder.Services.AddScoped<ICadastroRepository, CadastroRepository>();
+>>>>>>> 5cbf18c9b84570393ab4a5d15b52e40679f3d6a4
 
 			builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
 				.AddCookie(options =>
@@ -36,6 +57,7 @@ namespace Macro_Model
 				});
 
 
+<<<<<<< HEAD
 
 			builder.Services.AddScoped<ICadastroRepository, CadastroRepository>();
 
@@ -60,6 +82,11 @@ namespace Macro_Model
 
 				name: "default",
 				pattern: "{controller=Home}/{action=Index}/{id?}");
+=======
+            app.UseRouting();
+			app.UseAuthentication();
+			app.UseAuthorization();
+>>>>>>> 5cbf18c9b84570393ab4a5d15b52e40679f3d6a4
 
 
 			app.Run();

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using System.Diagnostics;
 using System.Security.Claims;
 using Macro_Model.Models;
@@ -87,3 +88,32 @@ namespace Macro_Model.Controllers
 
 	}
 }
+=======
+﻿//using System.Diagnostics;
+//using System.Security.Claims;
+//using Macro_Model.Models;
+//using Microsoft.AspNetCore.Authentication;
+//using Microsoft.AspNetCore.Authorization;
+//using Microsoft.AspNetCore.Mvc;
+//using Microsoft.AspNetCore.Mvc.Infrastructure;
+//using Microsoft.EntityFrameworkCore;
+
+//namespace Macro_Model.Controllers
+//{
+    
+//	[Route("Login")]
+//	public class LoginController : Controller
+//	{
+//		private readonly AppDbContext _context;
+
+//		public LoginController(AppDbContext context)
+//		{
+//			_context = context;
+//		}
+
+       
+
+
+//    }
+//}
+>>>>>>> 5cbf18c9b84570393ab4a5d15b52e40679f3d6a4

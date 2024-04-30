@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using Macro_Model.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Macro_Model.Controllers
@@ -13,7 +14,7 @@ namespace Macro_Model.Controllers
         {
             _logger = logger;
         }
-
+       
         public IActionResult Index()
         {
             return View();  

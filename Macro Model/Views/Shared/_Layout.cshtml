@@ -17,17 +17,31 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" style="height:80px;">
+<<<<<<< HEAD
                     <ul class="navbar-nav mr-auto ">
                        
+=======
+                    <ul class="navbar-nav mr-auto">
+                        
+>>>>>>> 5cbf18c9b84570393ab4a5d15b52e40679f3d6a4
                         <li class="nav-item" style="width:110px">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Cadastro" asp-action="Cadastro">Cadastre-se!</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Produto" asp-action="Produto">Produtos</a>
                         </li>
+<<<<<<< HEAD
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Cadastro" asp-action="Usuario">Usuarios</a>
                         </li>
+=======
+                        @if(User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item" >
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Cadastro" asp-action="Usuario">Usuarios</a>
+                            </li>
+                        }
+>>>>>>> 5cbf18c9b84570393ab4a5d15b52e40679f3d6a4
                         <li class="nav-item" style="width:200px">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Produto" asp-action="Lista">Produto Listados</a>
                         </li>
@@ -46,21 +60,38 @@
                     <ul class="navbar-nav" style="display:flex;justify-content:right;width:100%;margin-right:15px">
                         @if (User.Identity.IsAuthenticated)
                         {
+<<<<<<< HEAD
                             <li class="nav-item">
                                 Olá, @User.Identity.Name <a class="nav-link text-dark" asp-controller="Login" asp-action="Logout">Sair</a>
+=======
+                            <li class="nav-item"  >
+                                Olá, @User.Identity.Name <a class="nav-link text-dark" asp-controller="Cadastro" asp-action="Logout">Sair</a>
+>>>>>>> 5cbf18c9b84570393ab4a5d15b52e40679f3d6a4
                             </li>
                         }
                         else
                         {
+<<<<<<< HEAD
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-controller="Login" asp-action="Login">Login</a>
+=======
+                            <li class="nav-item" >
+                                <a class="nav-link text-dark" asp-controller="Cadastro" asp-action="Login">Login</a>
+>>>>>>> 5cbf18c9b84570393ab4a5d15b52e40679f3d6a4
                             </li>
                         }
 
 
 
                     </ul>
+<<<<<<< HEAD
                     @* <nav class="navbar navbar-light bg-light">
+=======
+
+
+                    </br>
+                   @*  <nav class="navbar navbar-light bg-light">
+>>>>>>> 5cbf18c9b84570393ab4a5d15b52e40679f3d6a4
                         <form class="form-inline">
                             <input class="form-control mr-sm-0" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
                             <button class="btn btn-outline-success my-0 my-sm-0" type="submit">Pesquisar</button>

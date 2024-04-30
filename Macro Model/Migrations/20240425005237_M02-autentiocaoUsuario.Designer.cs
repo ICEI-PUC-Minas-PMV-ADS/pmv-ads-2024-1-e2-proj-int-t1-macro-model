@@ -3,6 +3,7 @@ using Macro_Model.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Macro_Model.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240425005237_M02-autentiocaoUsuario")]
+    partial class M02autentiocaoUsuario
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,7 +32,7 @@ namespace Macro_Model.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -49,12 +52,6 @@ namespace Macro_Model.Migrations
 
                     b.HasKey("Cpf");
 
-<<<<<<< HEAD
-                    b.HasIndex("Email")
-                        .IsUnique();
-
-=======
->>>>>>> 5cbf18c9b84570393ab4a5d15b52e40679f3d6a4
                     b.HasIndex("produtoId");
 
                     b.ToTable("Cadastro");
@@ -88,12 +85,6 @@ namespace Macro_Model.Migrations
             modelBuilder.Entity("Macro_Model.Models.Cadastro", b =>
                 {
                     b.HasOne("Macro_Model.Models.Produto", "Produto")
-<<<<<<< HEAD
-                        .WithMany()
-                        .HasForeignKey("produtoId");
-
-                    b.Navigation("Produto");
-=======
                         .WithMany("Cadastros")
                         .HasForeignKey("produtoId");
 
@@ -103,7 +94,6 @@ namespace Macro_Model.Migrations
             modelBuilder.Entity("Macro_Model.Models.Produto", b =>
                 {
                     b.Navigation("Cadastros");
->>>>>>> 5cbf18c9b84570393ab4a5d15b52e40679f3d6a4
                 });
 #pragma warning restore 612, 618
         }

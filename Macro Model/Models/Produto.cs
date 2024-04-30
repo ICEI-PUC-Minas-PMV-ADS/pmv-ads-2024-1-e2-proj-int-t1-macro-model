@@ -9,7 +9,8 @@ namespace Macro_Model.Models
     {
         [Key]
         [Display(Name = "Código do produto")]
-        public string Id { get; set; }
+		[RegularExpression(@"^\d+$", ErrorMessage = "O código do produto deve conter apenas números")]
+		public string Id { get; set; }
 
         [Display(Name = "Nome")]
         [Required(ErrorMessage = "Obrigatório digitar um nome ")]
@@ -26,5 +27,7 @@ namespace Macro_Model.Models
 		[MaxLength(50, ErrorMessage = "Máximo de 50 caracteres.")]
 		public string Restricao { get; set; }
 
-	}
+        public ICollection<Cadastro> Cadastros { get; set; }
+        
+    }
 }

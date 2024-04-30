@@ -3,18 +3,30 @@
 	ViewData["Title"] = "Produto";
 }
 
+<<<<<<< HEAD
 @* <h2>@ViewData["Title"]</h2> *@
 
 <div class="row" style="display:flex;justify-content:center">
 	<div class="col-md-8" style=" background-color:#fff; padding: 30px 30px;margin:45px;width:450px">
 		<h2 style="text-align:center;padding:15px 0px">Adicionar novo alimento/produto</h2>
 		<form asp-action="Produto" style="border: lightgray;padding:30px;border-radius:10%;">
+=======
+<h2 style="padding:20px 0px">@ViewData["Title"]</h2>
+
+<div class="row">
+	<div class="col-md-8" style="padding:5px 0px">
+		<form asp-action="Produto">
+>>>>>>> 5cbf18c9b84570393ab4a5d15b52e40679f3d6a4
 
 			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
 			<div class="form-group">
 				<label asp-for="Nome" class="control-label"></label>
+<<<<<<< HEAD
 				<input asp-for="Nome" class="form-control" placeholder="Insira seu nome completo" />
+=======
+				<input asp-for="Nome" class="form-control" placeholder="Nome" />
+>>>>>>> 5cbf18c9b84570393ab4a5d15b52e40679f3d6a4
 			</div>
 
 			<div class="form-group">
