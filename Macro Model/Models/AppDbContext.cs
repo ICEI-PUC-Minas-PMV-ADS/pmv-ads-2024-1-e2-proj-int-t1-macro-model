@@ -7,9 +7,19 @@ namespace Macro_Model.Models
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
+        public DbSet<Produto> Produto { get; set; }
+
+
         public DbSet<Cadastro> Cadastro { get; set; }
-		public DbSet<Login> Login { get; set; }
-		public DbSet<Produto> Produto { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+
+            // Define um índice único para a coluna Email
+            modelBuilder.Entity<Cadastro>()
+                .HasIndex(c => c.Email)
+                .IsUnique();
+        }
+       
 
 
 	}

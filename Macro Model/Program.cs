@@ -1,50 +1,68 @@
 using Macro_Model.Interfaces;
 using Macro_Model.Models;
 using Macro_Model.Repositories;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 namespace Macro_Model
 {
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            var builder = WebApplication.CreateBuilder(args);
+	public class Program
+	{
+		public static void Main(string[] args)
+		{
+			var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-            builder.Services.AddControllersWithViews();
+			// Add services to the container.
+			builder.Services.AddControllersWithViews();
 
-            builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
+			builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
-            builder.Services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+			builder.Services.AddDbContext<AppDbContext>(options =>
+				options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-            builder.Services.AddScoped<ICadastroRepository, CadastroRepository>();
+			builder.Services.Configure<CookiePolicyOptions>(options =>
+			{
+				options.CheckConsentNeeded = context => true;
+				options.MinimumSameSitePolicy = SameSiteMode.None;
+			}
+			);
 
-            var app = builder.Build();
+			builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+				.AddCookie(options =>
+				{
+					options.AccessDeniedPath = "/Cadastro/AccessDenied/";
+					options.LoginPath = "/Login/Login/";
 
-            // Configure the HTTP request pipeline.
-            if (!app.Environment.IsDevelopment())
-            {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
+				});
 
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
 
-            app.UseRouting();
 
-            app.UseAuthorization();
+			builder.Services.AddScoped<ICadastroRepository, CadastroRepository>();
 
-            app.MapControllerRoute(
-            
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
-          
+			var app = builder.Build();
+
+			// Configure the HTTP request pipeline.
+			if (!app.Environment.IsDevelopment())
+			{
+				app.UseExceptionHandler("/Home/Error");
+				// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+				app.UseHsts();
+			}
+
+			app.UseHttpsRedirection();
+			app.UseStaticFiles();
+
+			app.UseRouting();
+			app.UseAuthentication();
+			app.UseAuthorization();
+
+			app.MapControllerRoute(
+
+				name: "default",
+				pattern: "{controller=Home}/{action=Index}/{id?}");
+
 
 			app.Run();
-        }
-    }
+		}
+	}
 }

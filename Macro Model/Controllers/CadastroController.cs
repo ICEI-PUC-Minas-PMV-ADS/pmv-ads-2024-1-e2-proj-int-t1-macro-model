@@ -36,6 +36,7 @@ namespace Macro_Model.Controllers
 
 			if (ModelState.IsValid)
 			{
+				cadastro.Senha = BCrypt.Net.BCrypt.HashPassword(cadastro.Senha);
 				_context.Cadastro.Add(cadastro);
 				await _context.SaveChangesAsync();
 				return RedirectToAction("Usuario");
@@ -66,6 +67,7 @@ namespace Macro_Model.Controllers
 
 			if (ModelState.IsValid)
 			{
+				cadastro.Senha = BCrypt.Net.BCrypt.HashPassword(cadastro.Senha);
 				_context.Cadastro.Update(cadastro);
 				await _context.SaveChangesAsync();
 				return RedirectToAction("Usuario");
