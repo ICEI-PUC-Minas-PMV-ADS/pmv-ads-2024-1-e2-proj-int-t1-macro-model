@@ -12,7 +12,7 @@ using Microsoft.Identity.Client;
 
 namespace Macro_Model.Controllers
 {
-    [Authorize]
+    
     public class CadastroController : Controller
 	{
 
@@ -23,13 +23,13 @@ namespace Macro_Model.Controllers
 			_context = context;
 		}
 
-        [Authorize("Admin")]
+       
         public async Task<IActionResult> Usuario()
 		{
 			return View(await _context.Cadastro.ToListAsync());
 		}
 
-        [AllowAnonymous]
+        
         public IActionResult Login()
         {
 
@@ -37,7 +37,7 @@ namespace Macro_Model.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
+        
         public async Task<IActionResult> Login(Cadastro cadastro)
         {
 
@@ -86,13 +86,12 @@ namespace Macro_Model.Controllers
 
 
       
-
-        [AllowAnonymous]
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync();
-            return RedirectToAction("Cadastro", "Login");
+            return RedirectToAction("Login", "Cadastro");
         }
+
 
 		
 		public IActionResult AcessDenied()
@@ -100,25 +99,22 @@ namespace Macro_Model.Controllers
 			return View();
 		}
 
-        [AllowAnonymous]
+       
         public IActionResult Cadastro()
         {
             return View();
         }
 
         [HttpPost]
-        [AllowAnonymous]
-        public async Task<IActionResult> Cadastro([Bind("Cpf,Nome,E-mail,Senha,Perfil")] Cadastro cadastro)
+        
+        public async Task<IActionResult> Cadastro(/*[Bind("Cpf,Nome,E-mail,Senha,Perfil")]*/ Cadastro cadastro)
 		{
 
 	
 			
             if (ModelState.IsValid)
 			{
-<<<<<<< HEAD
-=======
 
->>>>>>> 5cbf18c9b84570393ab4a5d15b52e40679f3d6a4
 				cadastro.Senha = BCrypt.Net.BCrypt.HashPassword(cadastro.Senha);
 				_context.Cadastro.Add(cadastro);
 				await _context.SaveChangesAsync();
@@ -144,20 +140,20 @@ namespace Macro_Model.Controllers
 
 		[HttpPost]
         
-        public async Task<IActionResult> Edit([Bind("Cpf,Nome,E-mail,Senha,Perfil")] string id, Cadastro cadastro)
+        public async Task<IActionResult> Edit(/*[Bind("Cpf,Nome,E-mail,Senha,Perfil")]*/ string id, Cadastro cadastro)
 		{
 			if (id != cadastro.Cpf)
 				return NotFound();
 
 			if (ModelState.IsValid)
 			{
-<<<<<<< HEAD
+
 				cadastro.Senha = BCrypt.Net.BCrypt.HashPassword(cadastro.Senha);
 				_context.Cadastro.Update(cadastro);
-=======
+
                 cadastro.Senha = BCrypt.Net.BCrypt.HashPassword(cadastro.Senha);
                 _context.Cadastro.Update(cadastro);
->>>>>>> 5cbf18c9b84570393ab4a5d15b52e40679f3d6a4
+
 				await _context.SaveChangesAsync();
 				return RedirectToAction("Usuario");
 			}
@@ -195,7 +191,7 @@ namespace Macro_Model.Controllers
 
 		[HttpPost, ActionName("Delete")]
        
-        public async Task<IActionResult> DeleteConfirmed([Bind("Cpf,Nome,E-mail,Senha,Perfil")] string? id)
+        public async Task<IActionResult> DeleteConfirmed(string? id)
         {
             if (id == null)
                 return NotFound();

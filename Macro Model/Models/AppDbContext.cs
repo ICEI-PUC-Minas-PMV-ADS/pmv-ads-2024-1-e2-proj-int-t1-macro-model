@@ -7,7 +7,7 @@ namespace Macro_Model.Models
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-<<<<<<< HEAD
+
         public DbSet<Produto> Produto { get; set; }
 
 
@@ -21,14 +21,7 @@ namespace Macro_Model.Models
                 .IsUnique();
         }
        
-=======
-        
-		public DbSet<Produto> Produto { get; set; }
->>>>>>> 5cbf18c9b84570393ab4a5d15b52e40679f3d6a4
 
-        public DbSet<Cadastro> Cadastro { get; set; }
-
-      
 
     }
 }
