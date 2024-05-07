@@ -7,13 +7,13 @@
 
 @* <h2>Insira seus dados para cadastro </h2> *@
 </br>
-<div class="row" style="display:flex;justify-content:center">
-	<div class="col-md-4" style=" background-color:#fff; padding: 30px 30px;margin:45px;width:450px">
+<div class="row" style="display:flex;justify-content:center;height:80vh;align-items:center;">
+	<div class="col-md-4" style=" background-color:#fff; padding: 30px 30px;margin:45px;width:450px;border-radius:25px">
 		<h2 style="text-align:center;padding:15px 0px">Entre com seus dados para cadastro</h2>
-		<form asp-controller="Cadastro" asp-action="Cadastro" style="border: lightgray;padding:30px;border-radius:10%;">
+		<form asp-controller="Cadastro" asp-action="Cadastro"  style="border: lightgray;padding:10px;border-radius:20px;">
 				
 				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-				
+
 				<div class="form-group">
 					<label asp-for="Nome" class="control-label"></label>
 					<input asp-for="Nome" class="form-control" placeholder="Insira seu nome completo"/>
@@ -37,8 +37,13 @@
 					<input asp-for="Senha" class="form-control"  placeholder="Crie uma senha de no mínimo 8 caracteres"/>
 					<span asp-validation-for="Senha" class="text-danger"></span>
 				</div>
+				<div class="form-group">
+					<label asp-for="Perfil" class="control-label"></label>
+					<select asp-for="Perfil" class="form-control" asp-items="Html.GetEnumSelectList<Perfil>()"></select>
+					<span asp-validation-for="Perfil" class="text-danger"></span>
+				</div>
 				<br></br>
-				<div class="form-group" style="display:flex;justify-content:center">
+				<div class="form-group mb-2" style="display:flex;justify-content:center">
 					<input type="submit" value="Cadastrar" class="btn btn-primary btn-lg btn-block" style="width:100%" />
 					@* <a asp-controller ="Login" asp-action="Login" class="btn btn-info">Voltar ao login</a> *@
 				</div>

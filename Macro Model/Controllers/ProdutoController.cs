@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Macro_Model.Controllers
 {
-    
+    [Authorize]
 	public class ProdutoController : Controller
 	{
 		private readonly AppDbContext _context;

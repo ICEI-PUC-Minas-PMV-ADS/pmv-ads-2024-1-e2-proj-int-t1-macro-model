@@ -31,15 +31,15 @@ namespace Macro_Model
             builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
                 {
-                    options.AccessDeniedPath = "/Cadastro/AccessDenied/";
+                    options.AccessDeniedPath = "/Cadastro/AcessDenied/";
                     options.LoginPath = "/Login/Login/";
 
 				});
 
 
+			
 
-
-			builder.Services.AddScoped<ICadastroRepository, CadastroRepository>();
+            
 
 			var app = builder.Build();
 

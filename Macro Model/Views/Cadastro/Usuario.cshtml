@@ -6,14 +6,14 @@
 
 
 
-<div class="table-responsive-sm" style="margin:0px 20px;display:flex;flex-direction:column;justify-content:center;height:80vh;align-items:center">
-    <div style="padding-bottom:30px; background-color:#fff; padding: 30px 30px;margin:50px">
+<div class="table-responsive-sm" style="margin:0px 20px;display:flex;flex-direction:column;justify-content:flex-start;height:80vh;align-items:center">
+    <div style="background-color:#fff; padding: 10px 15px;margin:20px">
         <h1 style="text-align:center;padding:15px 0px">Usuários</h1>
 
     
         <a asp-action="Cadastro" class="btn btn-success" style="margin-bottom:10px">Criar um novo usuário</a>
     
-        <table class="table table-bordered" >
+        <table class="table table-bordered">
             <thead>
                 <tr class="table-info">
                     <th style="text-align: center; vertical-align: middle;">
@@ -22,9 +22,9 @@
                     <th style="text-align: center; vertical-align: middle;">
                         @Html.DisplayNameFor(model => model.Email)
                     </th>
-                    <th style="text-align: center; vertical-align: middle;">
+                  @*   <th style="text-align: center; vertical-align: middle;">
                         @Html.DisplayNameFor(model => model.Senha)
-                    </th>
+                    </th> *@
                     <th style="text-align: center; vertical-align: middle;">
                         @Html.DisplayNameFor(model => model.Cpf)
                     </th>
@@ -46,9 +46,9 @@
                     <td style="text-align: center; vertical-align: middle;">
                             @Html.DisplayFor(modelItem => item.Email)
                     </td>
-                    <td style="text-align: center; vertical-align: middle;">
+                  @*   <td style="text-align: center; vertical-align: middle;">
                             @Html.DisplayFor(modelItem => item.Senha)
-                    </td>
+                    </td> *@
                     <td style="text-align: center; vertical-align: middle;">
                             @Html.DisplayFor(modelItem => item.Cpf)
                     </td>

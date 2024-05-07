@@ -5,6 +5,7 @@ using Macro_Model.Models;
 using Macro_Model.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +13,7 @@ using Microsoft.Identity.Client;
 
 namespace Macro_Model.Controllers
 {
-    
+    [Authorize]
     public class CadastroController : Controller
 	{
 
@@ -23,13 +24,13 @@ namespace Macro_Model.Controllers
 			_context = context;
 		}
 
-       
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Usuario()
 		{
 			return View(await _context.Cadastro.ToListAsync());
 		}
 
-        
+        [AllowAnonymous]
         public IActionResult Login()
         {
 
@@ -37,7 +38,7 @@ namespace Macro_Model.Controllers
         }
 
         [HttpPost]
-        
+        [AllowAnonymous]
         public async Task<IActionResult> Login(Cadastro cadastro)
         {
 
@@ -59,7 +60,7 @@ namespace Macro_Model.Controllers
                 {
                     new Claim(ClaimTypes.Name, dados.Nome),
                     new Claim(ClaimTypes.NameIdentifier, dados.Cpf.ToString()),
-                    new Claim(ClaimTypes.Role, dados.Email.ToString())
+                    new Claim(ClaimTypes.Role, dados.Perfil.ToString())
                 };
 
                 var usuarioIdentididade = new ClaimsIdentity(claims, "login");
@@ -85,7 +86,7 @@ namespace Macro_Model.Controllers
         }
 
 
-      
+        [AllowAnonymous]
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync();
@@ -93,20 +94,20 @@ namespace Macro_Model.Controllers
         }
 
 
-		
-		public IActionResult AcessDenied()
+        [AllowAnonymous]
+        public IActionResult AcessDenied()
 		{
 			return View();
 		}
 
-       
+        [AllowAnonymous]
         public IActionResult Cadastro()
         {
             return View();
         }
 
         [HttpPost]
-        
+        [AllowAnonymous]
         public async Task<IActionResult> Cadastro(/*[Bind("Cpf,Nome,E-mail,Senha,Perfil")]*/ Cadastro cadastro)
 		{
 

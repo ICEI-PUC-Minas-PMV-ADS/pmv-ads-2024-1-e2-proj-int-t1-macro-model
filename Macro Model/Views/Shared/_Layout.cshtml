@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Macro_Model.styles.css" asp-append-version="true" />
 </head>
-<body style="padding:0%;margin:0%;">
+<body >
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
@@ -17,36 +17,31 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" style="height:80px;">
+                <div class="collapse navbar-collapse d-sm-inline-flex justify-contet-between" style="height:60px;">
 
                        
 
                     <ul class="navbar-nav mr-auto">
                         
-
+                       
                         <li class="nav-item" style="width:110px">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Cadastro" asp-action="Cadastro">Cadastre-se!</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Produto" asp-action="Lista">Produtos</a>
-                        </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Cadastro" asp-action="Usuario">Usuarios</a>
-                        </li>
-
-                     
-                       
-                       @*  @if (User.IsInRole("Admin"))
+                        @if (User.Identity.IsAuthenticated)
                         {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Cadastro" asp-action="Usuario">Usuarios</a>
-                            </li>
-                        }
-                        <li class="nav-item" style="width:200px">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Produto" asp-action="Lista">Produto Listados</a>
-                        </li> *@
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item" >
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Cadastro" asp-action="Usuario">Usuários</a>
+                                </li>
+                            }
 
+                            <li class="nav-item" style="width:200px">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Produto" asp-action="Lista">Produto Listados</a>
+                            </li>
+
+                        }
                     </ul>
 
                     <ul class="navbar-nav" style="display:flex;justify-content:right;width:100%;margin-right:15px">
@@ -91,17 +86,22 @@
       
     </header>
 
-    <div class="container" style="margin:0%;padding:0%">
-        <main style="background-color:#EAEDF4;width:100vw" role="main" class="pb-3">
+    <div class="container" >
+        <main class="bg-image"  role="main">
+            	
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - Macro Model - <a asp-area="" asp-controller="Home" asp-action="Privacy">Quem somos nós!</a>
+ 
+
+    <footer class="text-center position-fixed bottom-0 w-100 text-white" style="background-color:grey">
+        <div class="text-center p-3">
+            &copy; 2024 - Macro Model - <a class="text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Quem somos nós!</a>
         </div>
     </footer>
+ 
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
