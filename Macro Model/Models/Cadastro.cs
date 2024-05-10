@@ -47,6 +47,8 @@ namespace Macro_Model.Models
 		public Produto Produto { get; set; }
 
 
+
+
 	}
 }
 public enum Perfil
