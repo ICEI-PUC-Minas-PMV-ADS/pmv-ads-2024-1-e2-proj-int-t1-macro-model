@@ -27,7 +27,6 @@ namespace Macro_Model.Models
 		[MaxLength(50, ErrorMessage = "Máximo de 50 caracteres.")]
 		public string Restricao { get; set; }
 
-        public ICollection<Cadastro> Cadastros { get; set; }
         
     }
 }

@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Macro_Model.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240507021420_M01-initial")]
-    partial class M01initial
+    [Migration("20240510235747_teste1")]
+    partial class teste1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -60,6 +60,34 @@ namespace Macro_Model.Migrations
                     b.ToTable("Cadastro");
                 });
 
+            modelBuilder.Entity("Macro_Model.Models.Listadefavorito", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CadastroCpf")
+                        .HasColumnType("nvarchar(11)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("ProdutoId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CadastroCpf");
+
+                    b.HasIndex("ProdutoId");
+
+                    b.ToTable("Listadefavoritos");
+                });
+
             modelBuilder.Entity("Macro_Model.Models.Produto", b =>
                 {
                     b.Property<string>("Id")
@@ -88,15 +116,25 @@ namespace Macro_Model.Migrations
             modelBuilder.Entity("Macro_Model.Models.Cadastro", b =>
                 {
                     b.HasOne("Macro_Model.Models.Produto", "Produto")
-                        .WithMany("Cadastros")
+                        .WithMany()
                         .HasForeignKey("produtoId");
 
                     b.Navigation("Produto");
                 });
 
-            modelBuilder.Entity("Macro_Model.Models.Produto", b =>
+            modelBuilder.Entity("Macro_Model.Models.Listadefavorito", b =>
                 {
-                    b.Navigation("Cadastros");
+                    b.HasOne("Macro_Model.Models.Cadastro", "Cadastro")
+                        .WithMany()
+                        .HasForeignKey("CadastroCpf");
+
+                    b.HasOne("Macro_Model.Models.Produto", "Produto")
+                        .WithMany()
+                        .HasForeignKey("ProdutoId");
+
+                    b.Navigation("Cadastro");
+
+                    b.Navigation("Produto");
                 });
 #pragma warning restore 612, 618
         }

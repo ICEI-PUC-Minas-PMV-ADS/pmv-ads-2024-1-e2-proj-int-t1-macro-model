@@ -10,6 +10,8 @@ namespace Macro_Model.Models
 
         public DbSet<Produto> Produto { get; set; }
 
+        public DbSet<Listadefavorito> Listadefavoritos { get; set; }
+
 
         public DbSet<Cadastro> Cadastro { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

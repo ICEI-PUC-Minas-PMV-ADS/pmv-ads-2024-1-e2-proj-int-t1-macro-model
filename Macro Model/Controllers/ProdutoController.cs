@@ -7,29 +7,29 @@ using Microsoft.EntityFrameworkCore;
 namespace Macro_Model.Controllers
 {
     [Authorize]
-	public class ProdutoController : Controller
-	{
-		private readonly AppDbContext _context;
+    public class ProdutoController : Controller
+    {
+        private readonly AppDbContext _context;
 
-		public ProdutoController(AppDbContext context)
-		{
-			_context = context;
-		}
+        public ProdutoController(AppDbContext context)
+        {
+            _context = context;
+        }
 
         public async Task<IActionResult> Lista()
         {
             return View(await _context.Produto.ToListAsync());
         }
 
-        
+
         public IActionResult Produto()
-		{
-		
-			return View();
-		}
+        {
+
+            return View();
+        }
 
         [HttpPost]
-        public async Task<IActionResult> Produto([Bind("Id,Nome,Nutricional,Restricao")]Produto produto)
+        public async Task<IActionResult> Produto([Bind("Id,Nome,Nutricional,Restricao")] Produto produto)
         {
 
             if (ModelState.IsValid)
@@ -114,5 +114,51 @@ namespace Macro_Model.Controllers
             return RedirectToAction("Lista");
 
         }
+        //[HttpPost]
+        //public async Task<IActionResult> AdicionarAosFavoritos(string id)
+        //{
+        //    var usuarioCpf = User.Identity.Name; // Obtém o CPF do usuário logado
+
+        //    // Verifica se o usuário já possui uma lista de favoritos
+        //    var listaFavoritos = await _context.Listadefavoritos.FirstOrDefaultAsync(up => up.CadastroCpf == usuarioCpf);
+        //    if (listaFavoritos == null)
+        //    {
+        //        // Se o usuário não tiver uma lista de favoritos, redireciona para uma página onde ele pode criar a lista
+        //        return RedirectToAction("CriarListaFavoritos");
+        //    }
+
+        //    // Adiciona o produto à lista de favoritos do usuário
+        //    Produtoid.Listadefavoritos.Add(new Listadefavorito
+        //    {
+        //        Nome = usuarioCpf,
+        //        Id = id
+        //    });
+        //    await _context.SaveChangesAsync();
+
+        //    return RedirectToAction("Lista");
+        //}
+
+        //public IActionResult CriarListaFavoritos()
+        //{
+        //    return View();
+        //}
+
+        //[HttpPost]
+        //public async Task<IActionResult> CriarListaFavoritos(string nomeLista)
+        //{
+        //    var usuarioCpf = User.Identity.Name; // Obtém o CPF do usuário logado
+
+        //    // Cria uma nova lista de favoritos para o usuário
+        //    var listaFavoritos = new Listadefavorito
+        //    {
+        //        CadastroCpf = usuarioCpf,
+        //        Nome = nomeLista
+        //    };
+        //    _context.Listadefavoritos.Add(listaFavoritos);
+        //    await _context.SaveChangesAsync();
+
+        //    return RedirectToAction("Lista");
+        //}
+
     }
 }

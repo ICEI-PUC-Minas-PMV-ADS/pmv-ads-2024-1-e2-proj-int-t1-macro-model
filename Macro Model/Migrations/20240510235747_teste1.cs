@@ -5,7 +5,7 @@
 namespace Macro_Model.Migrations
 {
     /// <inheritdoc />
-    public partial class M01initial : Migration
+    public partial class teste1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -45,6 +45,31 @@ namespace Macro_Model.Migrations
                         principalColumn: "Id");
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Listadefavoritos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CadastroCpf = table.Column<string>(type: "nvarchar(11)", nullable: true),
+                    ProdutoId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    Nome = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Listadefavoritos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Listadefavoritos_Cadastro_CadastroCpf",
+                        column: x => x.CadastroCpf,
+                        principalTable: "Cadastro",
+                        principalColumn: "Cpf");
+                    table.ForeignKey(
+                        name: "FK_Listadefavoritos_Produtos_ProdutoId",
+                        column: x => x.ProdutoId,
+                        principalTable: "Produtos",
+                        principalColumn: "Id");
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Cadastro_Email",
                 table: "Cadastro",
@@ -55,11 +80,24 @@ namespace Macro_Model.Migrations
                 name: "IX_Cadastro_produtoId",
                 table: "Cadastro",
                 column: "produtoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Listadefavoritos_CadastroCpf",
+                table: "Listadefavoritos",
+                column: "CadastroCpf");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Listadefavoritos_ProdutoId",
+                table: "Listadefavoritos",
+                column: "ProdutoId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Listadefavoritos");
+
             migrationBuilder.DropTable(
                 name: "Cadastro");
 
