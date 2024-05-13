@@ -24,10 +24,15 @@ namespace Macro_Model.Models
 
 		[Display(Name = "Restrições alimentares ")]
 		[Required(ErrorMessage = "Obrigatório informa as restrições do alimento ")]
-		[MaxLength(50, ErrorMessage = "Máximo de 50 caracteres.")]
+		[MaxLength(500, ErrorMessage = "Máximo de 500 caracteres.")]
 		public string Restricao { get; set; }
 
-        public ICollection<Cadastro> Cadastros { get; set; }
-        
+     
+
+        [Display(Name = "Tipo de Conteúdo da Imagem")]
+        [RegularExpression(@"^image\/(jpeg|png)$", ErrorMessage = "O tipo de conteúdo da imagem deve ser JPEG ou PNG.")]
+        public string TipoConteudoImagem { get; set; }
+
+
     }
 }

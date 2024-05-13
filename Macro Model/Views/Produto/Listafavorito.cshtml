@@ -1,0 +1,44 @@
+﻿@model Macro_Model.Models.Listadefavorito
+
+@{
+    ViewData["Title"] = "Listafavorito";
+}
+
+<h1>Listafavorito</h1>
+
+<h4>Listadefavorito</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Listafavorito">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="CadastroCpf" class="control-label"></label>
+                <select asp-for="CadastroCpf" class="form-control" asp-items="ViewBag.CadastroCpf"></select>
+                <span asp-validation-for="CadastroCpf" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProdutoId" class="control-label"></label>
+                <select asp-for="ProdutoId" class="form-control" asp-items="ViewBag.ProdutoId"></select>
+                <span asp-validation-for="ProdutoId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

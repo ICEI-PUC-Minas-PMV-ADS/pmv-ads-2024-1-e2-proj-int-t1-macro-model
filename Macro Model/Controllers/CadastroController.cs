@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics;
 using System.Security.Claims;
-using Macro_Model.Interfaces;
+
 using Macro_Model.Models;
-using Macro_Model.Services;
+
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authorization.Infrastructure;

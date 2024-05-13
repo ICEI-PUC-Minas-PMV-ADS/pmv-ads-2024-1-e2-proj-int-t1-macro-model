@@ -44,22 +44,43 @@ namespace Macro_Model.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<string>("produtoId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Cpf");
 
                     b.HasIndex("Email")
                         .IsUnique();
 
-                    b.HasIndex("produtoId");
-
                     b.ToTable("Cadastro");
+                });
+
+            modelBuilder.Entity("Macro_Model.Models.Listadefavorito", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CadastroCpf")
+                        .HasColumnType("nvarchar(11)");
+
+                    b.Property<string>("Nome")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProdutoId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CadastroCpf");
+
+                    b.HasIndex("ProdutoId");
+
+                    b.ToTable("Listadefavorito");
                 });
 
             modelBuilder.Entity("Macro_Model.Models.Produto", b =>
                 {
                     b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ListadefavoritoId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Nome")
@@ -74,26 +95,49 @@ namespace Macro_Model.Migrations
 
                     b.Property<string>("Restricao")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("TipoConteudoImagem")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ListadefavoritoId");
 
                     b.ToTable("Produtos");
                 });
 
-            modelBuilder.Entity("Macro_Model.Models.Cadastro", b =>
+            modelBuilder.Entity("Macro_Model.Models.Listadefavorito", b =>
                 {
-                    b.HasOne("Macro_Model.Models.Produto", "Produto")
-                        .WithMany("Cadastros")
-                        .HasForeignKey("produtoId");
+                    b.HasOne("Macro_Model.Models.Cadastro", "Cadastro")
+                        .WithMany("Listadefavorito")
+                        .HasForeignKey("CadastroCpf");
 
-                    b.Navigation("Produto");
+                    b.HasOne("Macro_Model.Models.Produto", "ProdutoFK")
+                        .WithMany()
+                        .HasForeignKey("ProdutoId");
+
+                    b.Navigation("Cadastro");
+
+                    b.Navigation("ProdutoFK");
                 });
 
             modelBuilder.Entity("Macro_Model.Models.Produto", b =>
                 {
-                    b.Navigation("Cadastros");
+                    b.HasOne("Macro_Model.Models.Listadefavorito", null)
+                        .WithMany("Produtos")
+                        .HasForeignKey("ListadefavoritoId");
+                });
+
+            modelBuilder.Entity("Macro_Model.Models.Cadastro", b =>
+                {
+                    b.Navigation("Listadefavorito");
+                });
+
+            modelBuilder.Entity("Macro_Model.Models.Listadefavorito", b =>
+                {
+                    b.Navigation("Produtos");
                 });
 #pragma warning restore 612, 618
         }

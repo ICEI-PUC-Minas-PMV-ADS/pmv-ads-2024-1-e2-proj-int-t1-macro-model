@@ -39,15 +39,11 @@ namespace Macro_Model.Models
 		[Display(Name = "Perfil ")]
 		public Perfil Perfil { get; set; }
 
-
-		public string produtoId { get; set; }
-
-
-		[ForeignKey("produtoId")]
-		public Produto Produto { get; set; }
+        
+        public virtual ICollection<Listadefavorito> Listadefavorito { get; set; }
 
 
-	}
+    }
 }
 public enum Perfil
 {
