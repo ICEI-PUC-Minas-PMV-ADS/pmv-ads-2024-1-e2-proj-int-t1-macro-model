@@ -11,13 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Macro_Model.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-<<<<<<<< HEAD:Macro Model/Migrations/20240511200011_M01.Designer.cs
-    [Migration("20240511200011_M01")]
-    partial class M01
-========
-    [Migration("20240511001917_teste2")]
-    partial class teste2
->>>>>>>> 226245225aa8f2ff95fe5c0ce4441abde858284e:Macro Model/Migrations/20240511001917_teste2.Designer.cs
+    [Migration("20240510235747_teste1")]
+    partial class teste1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,30 +47,34 @@ namespace Macro_Model.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
+                    b.Property<string>("produtoId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Cpf");
 
                     b.HasIndex("Email")
                         .IsUnique();
+
+                    b.HasIndex("produtoId");
 
                     b.ToTable("Cadastro");
                 });
 
             modelBuilder.Entity("Macro_Model.Models.Listadefavorito", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("CadastroCpf")
                         .HasColumnType("nvarchar(11)");
 
                     b.Property<string>("Nome")
-<<<<<<<< HEAD:Macro Model/Migrations/20240511200011_M01.Designer.cs
-                        .HasColumnType("nvarchar(max)");
-========
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
->>>>>>>> 226245225aa8f2ff95fe5c0ce4441abde858284e:Macro Model/Migrations/20240511001917_teste2.Designer.cs
 
                     b.Property<string>("ProdutoId")
                         .HasColumnType("nvarchar(450)");
@@ -86,19 +85,12 @@ namespace Macro_Model.Migrations
 
                     b.HasIndex("ProdutoId");
 
-<<<<<<<< HEAD:Macro Model/Migrations/20240511200011_M01.Designer.cs
-                    b.ToTable("Listadefavorito");
-========
                     b.ToTable("Listadefavoritos");
->>>>>>>> 226245225aa8f2ff95fe5c0ce4441abde858284e:Macro Model/Migrations/20240511001917_teste2.Designer.cs
                 });
 
             modelBuilder.Entity("Macro_Model.Models.Produto", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ListadefavoritoId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Nome")
@@ -113,57 +105,25 @@ namespace Macro_Model.Migrations
 
                     b.Property<string>("Restricao")
                         .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<string>("TipoConteudoImagem")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ListadefavoritoId");
 
                     b.ToTable("Produtos");
                 });
 
-            modelBuilder.Entity("Macro_Model.Models.Listadefavorito", b =>
+            modelBuilder.Entity("Macro_Model.Models.Cadastro", b =>
                 {
-<<<<<<<< HEAD:Macro Model/Migrations/20240511200011_M01.Designer.cs
-                    b.HasOne("Macro_Model.Models.Cadastro", "Cadastro")
-                        .WithMany("Listadefavorito")
-                        .HasForeignKey("CadastroCpf");
-========
                     b.HasOne("Macro_Model.Models.Produto", "Produto")
                         .WithMany()
                         .HasForeignKey("produtoId");
->>>>>>>> 226245225aa8f2ff95fe5c0ce4441abde858284e:Macro Model/Migrations/20240511001917_teste2.Designer.cs
 
-                    b.HasOne("Macro_Model.Models.Produto", "ProdutoFK")
-                        .WithMany()
-                        .HasForeignKey("ProdutoId");
-
-                    b.Navigation("Cadastro");
-
-                    b.Navigation("ProdutoFK");
+                    b.Navigation("Produto");
                 });
 
             modelBuilder.Entity("Macro_Model.Models.Listadefavorito", b =>
                 {
-<<<<<<<< HEAD:Macro Model/Migrations/20240511200011_M01.Designer.cs
-                    b.HasOne("Macro_Model.Models.Listadefavorito", null)
-                        .WithMany("Produtos")
-                        .HasForeignKey("ListadefavoritoId");
-                });
-
-            modelBuilder.Entity("Macro_Model.Models.Cadastro", b =>
-                {
-                    b.Navigation("Listadefavorito");
-                });
-
-            modelBuilder.Entity("Macro_Model.Models.Listadefavorito", b =>
-                {
-                    b.Navigation("Produtos");
-========
                     b.HasOne("Macro_Model.Models.Cadastro", "Cadastro")
                         .WithMany()
                         .HasForeignKey("CadastroCpf");
@@ -175,7 +135,6 @@ namespace Macro_Model.Migrations
                     b.Navigation("Cadastro");
 
                     b.Navigation("Produto");
->>>>>>>> 226245225aa8f2ff95fe5c0ce4441abde858284e:Macro Model/Migrations/20240511001917_teste2.Designer.cs
                 });
 #pragma warning restore 612, 618
         }
