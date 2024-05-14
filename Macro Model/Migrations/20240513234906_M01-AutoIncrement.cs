@@ -5,7 +5,7 @@
 namespace Macro_Model.Migrations
 {
     /// <inheritdoc />
-    public partial class M01 : Migration
+    public partial class M01AutoIncrement : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -29,9 +29,10 @@ namespace Macro_Model.Migrations
                 name: "Listadefavorito",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     CadastroCpf = table.Column<string>(type: "nvarchar(11)", nullable: true),
-                    ProdutoId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    ProdutoId = table.Column<int>(type: "int", nullable: false),
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -48,12 +49,13 @@ namespace Macro_Model.Migrations
                 name: "Produtos",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Nutricional = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     Restricao = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     TipoConteudoImagem = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ListadefavoritoId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    ListadefavoritoId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -91,7 +93,8 @@ namespace Macro_Model.Migrations
                 table: "Listadefavorito",
                 column: "ProdutoId",
                 principalTable: "Produtos",
-                principalColumn: "Id");
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
         }
 
         /// <inheritdoc />

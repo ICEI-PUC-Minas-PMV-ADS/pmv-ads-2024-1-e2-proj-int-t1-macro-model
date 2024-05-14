@@ -10,14 +10,15 @@ namespace Macro_Model.Models
     public class Listadefavorito
     {
         [Key]
-        public string Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
 
         [ForeignKey("Cadastro")]
         public string CadastroCpf { get; set; }
         public virtual Cadastro Cadastro { get; set; }
 
         [ForeignKey("ProdutoFK")]
-        public string ProdutoId { get; set; }
+        public int ProdutoId { get; set; }
         public virtual Produto ProdutoFK { get; set; }
 
 

@@ -9,8 +9,9 @@ namespace Macro_Model.Models
     {
         [Key]
         [Display(Name = "Código do produto")]
-		[RegularExpression(@"^\d+$", ErrorMessage = "O código do produto deve conter apenas números")]
-		public string Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [RegularExpression(@"^\d+$", ErrorMessage = "O código do produto deve conter apenas números")]
+		public int Id { get; set; }
 
         [Display(Name = "Nome")]
         [Required(ErrorMessage = "Obrigatório digitar um nome ")]

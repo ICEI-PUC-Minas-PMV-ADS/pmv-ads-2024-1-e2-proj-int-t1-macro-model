@@ -49,7 +49,7 @@ namespace Macro_Model.Controllers
             return View(produto);
         }
 
-        public async Task<IActionResult> Editar(string? id)
+        public async Task<IActionResult> Editar(int? id)
         {
 
             if (id == null)
@@ -63,7 +63,7 @@ namespace Macro_Model.Controllers
             return View(dados);
         }
         [HttpPost]
-        public async Task<IActionResult> Editar(string id, Produto produto)
+        public async Task<IActionResult> Editar(int? id, Produto produto)
         {
             if (id != produto.Id)
                 return NotFound();
@@ -77,7 +77,7 @@ namespace Macro_Model.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Detalhe(string? id)
+        public async Task<IActionResult> Detalhe(int? id)
         {
             if (id == null)
                 return NotFound();
@@ -91,7 +91,7 @@ namespace Macro_Model.Controllers
 
         }
 
-        public async Task<IActionResult> Delete(string? id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
                 return NotFound();
@@ -106,7 +106,7 @@ namespace Macro_Model.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
-        public async Task<IActionResult> DeleteConfirmed(string? id)
+        public async Task<IActionResult> DeleteConfirmed(int? id)
         {
             if (id == null)
                 return NotFound();
@@ -124,46 +124,46 @@ namespace Macro_Model.Controllers
         }
 
 
-        [HttpPost]
-        public async Task<IActionResult> Listafavorito(string id)
-        {
-            var usuarioCpf = User.Identity.Name; // Obtém o CPF do usuário logado
+        //[HttpPost]
+        //public async Task<IActionResult> Listafavorito(int? id)
+        //{
+        //    var usuarioCpf = User.Identity.Name; // Obtém o CPF do usuário logado
 
-            // Verifica se o usuário já possui uma lista de favoritos
-            var listaFavoritos = await _context.Listadefavorito.Include(lf => lf.ProdutoFK).FirstOrDefaultAsync(up => up.CadastroCpf == usuarioCpf);
-            if (listaFavoritos == null)
-            {
-                // Se o usuário não tiver uma lista de favoritos, redireciona para uma página onde ele pode criar a lista
-                return RedirectToAction("CriarListaFavoritos");
-            }
+        //    // Verifica se o usuário já possui uma lista de favoritos
+        //    var listaFavoritos = await _context.Listadefavorito.Include(lf => lf.ProdutoFK).FirstOrDefaultAsync(up => up.CadastroCpf == usuarioCpf);
+        //    if (listaFavoritos == null)
+        //    {
+        //        // Se o usuário não tiver uma lista de favoritos, redireciona para uma página onde ele pode criar a lista
+        //        return RedirectToAction("CriarListaFavoritos");
+        //    }
 
-            // Adiciona o produto à lista de favoritos do usuário
-            listaFavoritos.Produtos.Add(new Produto { Id = id });
-            await _context.SaveChangesAsync();
+        //    // Adiciona o produto à lista de favoritos do usuário
+        //    listaFavoritos.Produtos.Add(new Produto { Id = id });
+        //    await _context.SaveChangesAsync();
 
-            return RedirectToAction("Lista");
-        }
+        //    return RedirectToAction("Lista");
+        //}
 
-        public IActionResult CriarListaFavoritos()
-        {
-            return View();
-        }
+        //public IActionResult CriarListaFavoritos()
+        //{
+        //    return View();
+        //}
 
-        [HttpPost]
-        public async Task<IActionResult> CriarListaFavoritos(string nomeLista)
-        {
-            var usuarioCpf = User.Identity.Name; // Obtém o CPF do usuário logado
+        //[HttpPost]
+        //public async Task<IActionResult> CriarListaFavoritos(string nomeLista)
+        //{
+        //    var usuarioCpf = User.Identity.Name; // Obtém o CPF do usuário logado
 
-            // Cria uma nova lista de favoritos para o usuário
-            var listaFavoritos = new Listadefavorito
-            {
-                CadastroCpf = usuarioCpf,
-                Nome = nomeLista
-            };
-            _context.Listadefavorito.Add(listaFavoritos);
-            await _context.SaveChangesAsync();
+        //    // Cria uma nova lista de favoritos para o usuário
+        //    var listaFavoritos = new Listadefavorito
+        //    {
+        //        CadastroCpf = usuarioCpf,
+        //        Nome = nomeLista
+        //    };
+        //    _context.Listadefavorito.Add(listaFavoritos);
+        //    await _context.SaveChangesAsync();
 
-            return RedirectToAction("Lista");
-        }
+        //    return RedirectToAction("Lista");
+        //}
     }
 }
