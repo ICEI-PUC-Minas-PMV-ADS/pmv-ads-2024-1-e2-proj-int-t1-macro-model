@@ -26,14 +26,17 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t1-macro-mo
 
   |
 
-| **Caso de Teste** 	| **CT-02 – Realizar login** 	|
+
+| **Caso de Teste** 	| **CT-03 – A página inicial deve ter um botão no menu para a tela “Quem Somos”.** 	   |
 |:---:	|:---:	|
-|	Requisito Associado 	| RF-00Y - A aplicação deve permitir que um usuário previamente cadastrado faça login |
-|Registro de evidência | www.teste.com.br/drive/ct-02 |
+|	Requisito Associado 	| RF-003 - Fornece mais detalhes sobre o site e o grupo desenvolvido. |
+| Objetivo do Teste 	| Verificar inserção dos dados informados. |
+|Critério de Êxito | mostrar detalhes da informação aplicada.  |
+|Evidencia | 
 
-## Avaliação
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t1-macro-model/assets/145519272/f2209a40-ff7c-4b23-92d5-ce3dc727e3e2
 
-Discorra sobre os resultados do teste. Ressaltando pontos fortes e fracos identificados na solução. Comente como o grupo pretende atacar esses pontos nas próximas iterações. Apresente as falhas detectadas e as melhorias geradas a partir dos resultados obtidos nos testes.
+  |
 
-> **Links Úteis**:
-> - [Ferramentas de Test para Java Script](https://geekflare.com/javascript-unit-testing/)
+
+
