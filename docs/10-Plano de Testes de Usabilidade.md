@@ -14,12 +14,19 @@ O planejamento dos testes de usabilidade a serem realizados com usuários são d
 | Objetivo do Teste 	| Verificar se o sistema é compatível com os navegadores especificados sem comprometer sua funcionalidade. |
 | Passos 	| 1. Acessar o sistema utilizando Google Chrome, Firefox e Microsoft Edge.<br>2. Verificar se todas as funcionalidades do sistema estão disponíveis e operam corretamente em cada navegador. |
 | Critério de Êxito | Todas as funcionalidades do sistema devem estar disponíveis e funcionar corretamente nos navegadores Google Chrome, Firefox e Microsoft Edge, sem apresentar problemas de compatibilidade. |
+|Evidencia |
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t1-macro-model/assets/145519272/ad3769e8-cb98-4efd-b435-954de1138d6d
+
+   |
+
 |  	|  	|
 | **Caso de Teste** 	| **CTU-03 -Boas Práticas** 	|
 | Requisito Associado | RNF-003 - O sistema deve ser desenvolvido seguindo boas práticas e convenções de codificação em C#. |
 | Objetivo do Teste 	| Verificar se o código-fonte do sistema adere às boas práticas e convenções de codificação em C#. |
 | Passos 	| 1. Revisar o código-fonte em busca de padrões de codificação consistentes e legíveis.<br>2. Verificar se foram aplicadas boas práticas de programação, como encapsulamento, modularidade e legibilidade. |
-| Critério de Êxito | O código-fonte deve seguir as boas práticas e convenções de codificação em C#, demonstrando consistência, legibilidade e conformidade com os padrões estabelecidos.
+| Critério de Êxito | O código-fonte deve seguir as boas práticas e convenções de codificação em C#, demonstrando consistência, legibilidade e conformidade com os padrões estabelecidos.|
+
 |  	|  	|
 | **Caso de Teste** 	| **CTU-04 – Autenticação** 	|
 | Requisito Associado | RNF-004 - O sistema deve incluir medidas básicas de segurança, como autenticação de usuários. |
