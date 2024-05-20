@@ -5,7 +5,7 @@
 namespace Macro_Model.Migrations
 {
     /// <inheritdoc />
-    public partial class M01AutoIncrement : Migration
+    public partial class M01 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -31,16 +31,15 @@ namespace Macro_Model.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CadastroCpf = table.Column<string>(type: "nvarchar(11)", nullable: true),
-                    ProdutoId = table.Column<int>(type: "int", nullable: false),
-                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Cpf = table.Column<string>(type: "nvarchar(11)", nullable: true),
+                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Listadefavorito", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Listadefavorito_Cadastro_CadastroCpf",
-                        column: x => x.CadastroCpf,
+                        name: "FK_Listadefavorito_Cadastro_Cpf",
+                        column: x => x.Cpf,
                         principalTable: "Cadastro",
                         principalColumn: "Cpf");
                 });
@@ -74,48 +73,27 @@ namespace Macro_Model.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Listadefavorito_CadastroCpf",
+                name: "IX_Listadefavorito_Cpf",
                 table: "Listadefavorito",
-                column: "CadastroCpf");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Listadefavorito_ProdutoId",
-                table: "Listadefavorito",
-                column: "ProdutoId");
+                column: "Cpf");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Produtos_ListadefavoritoId",
                 table: "Produtos",
                 column: "ListadefavoritoId");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Listadefavorito_Produtos_ProdutoId",
-                table: "Listadefavorito",
-                column: "ProdutoId",
-                principalTable: "Produtos",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Listadefavorito_Cadastro_CadastroCpf",
-                table: "Listadefavorito");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_Listadefavorito_Produtos_ProdutoId",
-                table: "Listadefavorito");
-
-            migrationBuilder.DropTable(
-                name: "Cadastro");
-
             migrationBuilder.DropTable(
                 name: "Produtos");
 
             migrationBuilder.DropTable(
                 name: "Listadefavorito");
+
+            migrationBuilder.DropTable(
+                name: "Cadastro");
         }
     }
 }

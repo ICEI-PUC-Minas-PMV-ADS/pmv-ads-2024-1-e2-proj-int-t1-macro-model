@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using static System.Net.Mime.MediaTypeNames;
 using System.IO;
+using System.Security.Claims;
+
 
 namespace Macro_Model.Controllers
 {
@@ -13,12 +15,11 @@ namespace Macro_Model.Controllers
 	public class ProdutoController : Controller
 	{
 		private readonly AppDbContext _context;
-        private readonly IWebHostEnvironment _webHost;
-
-		public ProdutoController(AppDbContext context, IWebHostEnvironment webHost)
+        
+		public ProdutoController(AppDbContext context )
 		{
 			_context = context;
-            _webHost = webHost;
+           
 
 		}
 
@@ -62,6 +63,7 @@ namespace Macro_Model.Controllers
 
             return View(dados);
         }
+
         [HttpPost]
         public async Task<IActionResult> Editar(int? id, Produto produto)
         {
@@ -124,46 +126,6 @@ namespace Macro_Model.Controllers
         }
 
 
-        //[HttpPost]
-        //public async Task<IActionResult> Listafavorito(int? id)
-        //{
-        //    var usuarioCpf = User.Identity.Name; // Obtém o CPF do usuário logado
 
-        //    // Verifica se o usuário já possui uma lista de favoritos
-        //    var listaFavoritos = await _context.Listadefavorito.Include(lf => lf.ProdutoFK).FirstOrDefaultAsync(up => up.CadastroCpf == usuarioCpf);
-        //    if (listaFavoritos == null)
-        //    {
-        //        // Se o usuário não tiver uma lista de favoritos, redireciona para uma página onde ele pode criar a lista
-        //        return RedirectToAction("CriarListaFavoritos");
-        //    }
-
-        //    // Adiciona o produto à lista de favoritos do usuário
-        //    listaFavoritos.Produtos.Add(new Produto { Id = id });
-        //    await _context.SaveChangesAsync();
-
-        //    return RedirectToAction("Lista");
-        //}
-
-        //public IActionResult CriarListaFavoritos()
-        //{
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //public async Task<IActionResult> CriarListaFavoritos(string nomeLista)
-        //{
-        //    var usuarioCpf = User.Identity.Name; // Obtém o CPF do usuário logado
-
-        //    // Cria uma nova lista de favoritos para o usuário
-        //    var listaFavoritos = new Listadefavorito
-        //    {
-        //        CadastroCpf = usuarioCpf,
-        //        Nome = nomeLista
-        //    };
-        //    _context.Listadefavorito.Add(listaFavoritos);
-        //    await _context.SaveChangesAsync();
-
-        //    return RedirectToAction("Lista");
-        //}
     }
 }

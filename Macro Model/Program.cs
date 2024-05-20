@@ -21,28 +21,17 @@ namespace Macro_Model
 
 			builder.Services.AddHttpContextAccessor();
 
-			builder.Services.AddImageSharp(
-				options =>
-				{
-					options.BrowserMaxAge = TimeSpan.FromDays(7);
-					options.CacheMaxAge = TimeSpan.FromDays(365);
-					options.CacheHashLength = 8;
-				}).Configure<PhysicalFileSystemCacheOptions>(options =>
-				{
-					options.CacheFolder = "Imagem";
-				}
-				);
+			
 
 			builder.Services.AddDbContext<AppDbContext>(options =>
 				options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-		
+			        
 
-
-
-			builder.Services.Configure<CookiePolicyOptions>(options =>
+            builder.Services.Configure<CookiePolicyOptions>(options =>
 			{
-				options.CheckConsentNeeded = context => true;
+                
+                options.CheckConsentNeeded = context => true;
 				options.MinimumSameSitePolicy = SameSiteMode.None;
 			}
 			);
@@ -55,12 +44,10 @@ namespace Macro_Model
 
 				});
 
+        
 
 
-
-
-
-			var app = builder.Build();
+            var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
 			if (!app.Environment.IsDevelopment())
@@ -72,7 +59,7 @@ namespace Macro_Model
 
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
-			app.UseImageSharp();
+			
 			app.UseRouting();
 			app.UseAuthentication();
 			app.UseAuthorization();
@@ -82,8 +69,7 @@ namespace Macro_Model
 				name: "default",
 				pattern: "{controller=Home}/{action=Index}/{id?}");
 
-
-			app.Run();
+            app.Run();
 		}
 
 	}

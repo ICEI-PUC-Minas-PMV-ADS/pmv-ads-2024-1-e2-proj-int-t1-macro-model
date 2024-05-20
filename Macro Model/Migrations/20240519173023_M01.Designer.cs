@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Macro_Model.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240513234906_M01-AutoIncrement")]
-    partial class M01AutoIncrement
+    [Migration("20240519173023_M01")]
+    partial class M01
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -64,20 +64,16 @@ namespace Macro_Model.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("CadastroCpf")
+                    b.Property<string>("Cpf")
                         .HasColumnType("nvarchar(11)");
 
                     b.Property<string>("Nome")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ProdutoId")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CadastroCpf");
-
-                    b.HasIndex("ProdutoId");
+                    b.HasIndex("Cpf");
 
                     b.ToTable("Listadefavorito");
                 });
@@ -122,17 +118,9 @@ namespace Macro_Model.Migrations
                 {
                     b.HasOne("Macro_Model.Models.Cadastro", "Cadastro")
                         .WithMany("Listadefavorito")
-                        .HasForeignKey("CadastroCpf");
-
-                    b.HasOne("Macro_Model.Models.Produto", "ProdutoFK")
-                        .WithMany()
-                        .HasForeignKey("ProdutoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("Cpf");
 
                     b.Navigation("Cadastro");
-
-                    b.Navigation("ProdutoFK");
                 });
 
             modelBuilder.Entity("Macro_Model.Models.Produto", b =>

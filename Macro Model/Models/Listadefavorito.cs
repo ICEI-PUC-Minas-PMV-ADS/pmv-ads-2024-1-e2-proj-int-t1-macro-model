@@ -6,26 +6,25 @@ using System.ComponentModel;
 
 namespace Macro_Model.Models
 {
+   
+
     [Table("Listadefavorito")]
     public class Listadefavorito
     {
+
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [ForeignKey("Cadastro")]
-        public string CadastroCpf { get; set; }
-        public virtual Cadastro Cadastro { get; set; }
+        public string Cpf { get; set; }
 
-        [ForeignKey("ProdutoFK")]
-        public int ProdutoId { get; set; }
-        public virtual Produto ProdutoFK { get; set; }
-
-
-        [DisplayName("Nome da Lista")]
-        public string Nome { get; set; }
-
+        [ForeignKey("Cpf")]
+        public Cadastro Cadastro { get; set; }
 
         public virtual ICollection<Produto> Produtos { get; set; }
+
+
+        [Required(ErrorMessage ="Nome obrigatório!")]
+        [DisplayName("Nome da Lista")]
+        public string Nome { get; set; }
     }
 }

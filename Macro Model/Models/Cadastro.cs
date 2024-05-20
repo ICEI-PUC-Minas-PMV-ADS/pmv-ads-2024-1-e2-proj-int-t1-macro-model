@@ -16,6 +16,7 @@ namespace Macro_Model.Models
         public string Cpf {  get; set; }
 
 
+
         [Display(Name = "Nome ")]
         [Required(ErrorMessage = "Obrigatório")]
         [MaxLength(50, ErrorMessage = "Máximo de 50 caracteres.")]
@@ -38,9 +39,9 @@ namespace Macro_Model.Models
 
 		[Display(Name = "Perfil ")]
 		public Perfil Perfil { get; set; }
-
-        
+                
         public virtual ICollection<Listadefavorito> Listadefavorito { get; set; }
+
 
 
     }
