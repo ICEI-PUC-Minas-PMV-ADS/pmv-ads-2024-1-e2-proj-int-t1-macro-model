@@ -22,10 +22,11 @@ O Modelo ER representa através de um diagrama como as entidades (coisas, objeto
 
 O projeto da base de dados corresponde à representação das entidades e relacionamentos identificadas no Modelo ER, no formato de tabelas, com colunas e chaves primárias/estrangeiras necessárias para representar corretamente as restrições de integridade.
 
-
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t1-macro-model/assets/104217381/013441a4-08ec-4cf5-a762-4246e6ef1a2f)
+Diagrama desenvolvido do Oracle SQL Developer Data Modeler
  
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t1-macro-model/assets/104217381/30c05cb4-2d16-4b46-a329-7b3339a92bbf)
-Diagrama extraído do SSMS.
+Diagrama desenvolvido do SSMS.
 
 
 
