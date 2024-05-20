@@ -4,8 +4,9 @@ Definição de como o software é estruturado em termos dos componentes que faze
 
 ## Diagrama de Classes
 
+![Diagrama Classe](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t1-macro-model/assets/145519272/4877315f-2287-480b-99ef-a672a4d09365)
 
-![Captura de tela 2024-04-01 222011](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-macro-model/assets/146286957/a3a36b84-a3aa-41b6-b62c-fc6af04232ea)
+
 
 
 ## Modelo ER (Projeto Conceitual)
@@ -13,7 +14,8 @@ Definição de como o software é estruturado em termos dos componentes que faze
 O Modelo ER representa através de um diagrama como as entidades (coisas, objetos) se relacionam entre si na aplicação interativa.
 
 
-![Captura de tela 2024-04-01 224640](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-macro-model/assets/146286957/c62c2c93-dc8c-4182-b0b6-e2ba8f57182c)
+![DiagrmaER](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t1-macro-model/assets/145519272/425e3983-2dcc-48aa-a82a-e39dcb5c6b2d)
+
 
 
 ## Projeto da Base de Dados
