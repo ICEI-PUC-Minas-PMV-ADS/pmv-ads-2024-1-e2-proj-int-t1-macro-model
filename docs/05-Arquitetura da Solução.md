@@ -21,8 +21,11 @@ O Modelo ER representa através de um diagrama como as entidades (coisas, objeto
 ## Projeto da Base de Dados
 
 O projeto da base de dados corresponde à representação das entidades e relacionamentos identificadas no Modelo ER, no formato de tabelas, com colunas e chaves primárias/estrangeiras necessárias para representar corretamente as restrições de integridade.
+
+
  
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t1-macro-model/assets/104217381/eb9bc939-bff1-4572-9b95-40967fb3d0fb)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t1-macro-model/assets/104217381/30c05cb4-2d16-4b46-a329-7b3339a92bbf)
+Diagrama extraído do SSMS.
 
 
 
@@ -36,4 +39,4 @@ O projeto da base de dados corresponde à representação das entidades e relaci
 ## Hospedagem
 
 O aplicação utilizará a plataforma GitHub Pages e o Microsoft Azure como ambientes de hospedagem.
-
+https://www.macromodel.azurewebsites.net
