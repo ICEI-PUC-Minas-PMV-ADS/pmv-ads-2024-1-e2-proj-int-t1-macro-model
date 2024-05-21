@@ -25,14 +25,16 @@ namespace Macro_Model.Controllers
 
         public async Task<IActionResult> Lista()
         {
-            return View(await _context.Produto.ToListAsync());
+			var produtos = _context.Produto.ToList();
+			ViewBag.ListasFavoritos = _context.Listadefavorito.ToList();
+			return View(produtos);
+			//return View(await _context.Produto.ToListAsync());
         }
 
         
         public IActionResult Produto()
 		{
-		
-			return View();
+            return View();
 		}
 
         [HttpPost]

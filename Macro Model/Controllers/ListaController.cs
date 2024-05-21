@@ -8,157 +8,196 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Macro_Model.Controllers
 {
-    [Authorize]
+	[Authorize]
 	public class ListaController : Controller
 	{
 		private readonly AppDbContext _context;
-       
-		public ListaController(AppDbContext context )
+
+		public ListaController(AppDbContext context)
 		{
 			_context = context;
-            
+
 
 		}
-              
-
-        public async Task<IActionResult> ListaFavoritos()
-        {
-            var usuarioNome = User.Identity.Name;
-            if (string.IsNullOrEmpty(usuarioNome))
-            {
-                // Usuário não está autenticado ou nome de usuário inválido
-                return RedirectToAction("Login"); // Redirecionar para a página de login
-            }
-            var usuario = await _context.Cadastro
-                .Include(c => c.Listadefavorito)
-                .FirstOrDefaultAsync(c => c.Nome == usuarioNome);
-
-            var favoritos = usuario.Listadefavorito;
-
-            return View(favoritos);
-
-        }
 
 
-        [HttpPost]
-        public async Task<IActionResult> CriaFavoritos([Bind("Nome")] string nomeLista)
-        {
-            if (ModelState.IsValid)
-            {
-                var usuarioNome = User.Identity.Name; // Obtém o nome de usuário
+		public async Task<IActionResult> ListaFavoritos()
+		{
+			var usuarioNome = User.Identity.Name;
+			if (string.IsNullOrEmpty(usuarioNome))
+			{
+				// Usuário não está autenticado ou nome de usuário inválido
+				return RedirectToAction("Login"); // Redirecionar para a página de login
+			}
+			
+			var usuario = await _context.Cadastro
+				.Include(c => c.Listadefavorito)
+				.ThenInclude(l => l.RelacaoProdutoListas)
+				.ThenInclude(r => r.Produto)
+				.FirstOrDefaultAsync(c => c.Nome == usuarioNome);
 
-                if (string.IsNullOrEmpty(usuarioNome))
-                {
-                    // Usuário não está autenticado ou nome de usuário inválido
-                    return RedirectToAction("Login"); // Redirecionar para a página de login
-                }
+			var favoritos = usuario.Listadefavorito;
 
-                // Busca o usuário na tabela Cadastro pelo nome de usuário
-                var usuario = _context.Cadastro.FirstOrDefault(c => c.Nome == usuarioNome);
+			return View(favoritos);
 
-                if (usuario == null)
-                {
-                    // Usuário não encontrado na tabela Cadastro
-                    // Trate o erro de acordo com a sua lógica de negócios
-                    return RedirectToAction("Erro");
-                }
-
-                // CPF do usuário encontrado, cria uma nova lista de favoritos
-                var listaFavoritos = new Listadefavorito
-                {
-                    Cadastro = usuario,
-                    Nome = nomeLista
-                };
-
-                _context.Listadefavorito.Add(listaFavoritos);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("ListaFavoritos");
-            }
-            return View();
-
-        }
+		}
 
 
-        public async Task<IActionResult> Editar(int? id)
-        {
+		[HttpPost]
+		public async Task<IActionResult> CriaFavoritos([Bind("Nome")] string nomeLista)
+		{
+			if (ModelState.IsValid)
+			{
+				var usuarioNome = User.Identity.Name; // Obtém o nome de usuário
 
-            if (id == null)
-                return NotFound();
+				if (string.IsNullOrEmpty(usuarioNome))
+				{
+					// Usuário não está autenticado ou nome de usuário inválido
+					return RedirectToAction("Login"); // Redirecionar para a página de login
+				}
 
-            var dados = await _context.Listadefavorito.FindAsync(id);
+				// Busca o usuário na tabela Cadastro pelo nome de usuário
+				var usuario = _context.Cadastro.FirstOrDefault(c => c.Nome == usuarioNome);
 
-            if (dados == null)
-                return NotFound();
+				if (usuario == null)
+				{
+					// Usuário não encontrado na tabela Cadastro
+					// Trate o erro de acordo com a sua lógica de negócios
+					return RedirectToAction("Erro");
+				}
 
-            return View(dados);
-        }
+				// CPF do usuário encontrado, cria uma nova lista de favoritos
+				var listaFavoritos = new Listadefavorito
+				{
+					Cadastro = usuario,
+					Nome = nomeLista
+				};
 
-        [HttpPost]
-        public async Task<IActionResult> Editar(int? id, Listadefavorito listadefavorito)
-        {
-            if (id != listadefavorito.Id)
-                return NotFound();
+				_context.Listadefavorito.Add(listaFavoritos);
+				await _context.SaveChangesAsync();
+				return RedirectToAction("ListaFavoritos");
+			}
+			return View();
 
-            if (ModelState.IsValid)
-            {
-                
-                 _context.Listadefavorito.Update(listadefavorito);
-                 await _context.SaveChangesAsync();
-                return RedirectToAction("ListaFavoritos");
-                               
-                
-            }
-            return View();
-        }
-
-        
+		}
 
 
-        public async Task<IActionResult> Detalhe(int? id)
-        {
-            if (id == null)
-                return NotFound();
+		public async Task<IActionResult> Editar(int? id)
+		{
 
-            var dados = await _context.Listadefavorito.FindAsync(id);
+			if (id == null)
+				return NotFound();
 
-            if (dados == null)
-                return NotFound();
+			var dados = await _context.Listadefavorito.FindAsync(id);
 
-            return View(dados);
+			if (dados == null)
+				return NotFound();
 
-        }
+			return View(dados);
+		}
 
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-                return NotFound();
+		[HttpPost]
+		public async Task<IActionResult> Editar(int? id, Listadefavorito listadefavorito)
+		{
+			if (id != listadefavorito.Id)
+				return NotFound();
 
-            var dados = await _context.Listadefavorito.FindAsync(id);
+			if (ModelState.IsValid)
+			{
 
-            if (dados == null)
-                return NotFound();
+				_context.Listadefavorito.Update(listadefavorito);
+				await _context.SaveChangesAsync();
+				return RedirectToAction("ListaFavoritos");
 
-            return RedirectToAction("ListaFavoritos");
 
-        }
-
-        [HttpPost]       
-        public async Task<IActionResult> DeleteConfirmed(int? id)
-        {
-            var dados = await _context.Listadefavorito.FindAsync(id);
-            if (dados != null)
-            {
-                _context.Listadefavorito.Remove(dados);
-                await _context.SaveChangesAsync();
-            }
-
-            return RedirectToAction(nameof(ListaFavoritos));
-
-        }
+			}
+			return View();
+		}
 
 
 
 
-    
-    }
+		public async Task<IActionResult> Detalhe(int? id)
+		{
+			if (id == null)
+				return NotFound();
+
+			var dados = await _context.Listadefavorito.FindAsync(id);
+
+			if (dados == null)
+				return NotFound();
+
+			return View(dados);
+
+		}
+
+		public async Task<IActionResult> Delete(int? id)
+		{
+			if (id == null)
+				return NotFound();
+
+			var dados = await _context.Listadefavorito.FindAsync(id);
+
+			if (dados == null)
+				return NotFound();
+
+			return RedirectToAction("ListaFavoritos");
+
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> DeleteConfirmed(int? id)
+		{
+			var dados = await _context.Listadefavorito.FindAsync(id);
+			if (dados != null)
+			{
+				_context.Listadefavorito.Remove(dados);
+				await _context.SaveChangesAsync();
+			}
+
+			return RedirectToAction(nameof(ListaFavoritos));
+
+		}
+
+
+
+
+		//public async Task<IActionResult> SelecionarLista(int produtoId)
+		//{
+		//	var listasFavoritos = await _context.Listadefavorito.ToListAsync();
+		//	var viewModel = new ListaFavoritosViewModel
+		//		{
+		//			ListasFavoritos = listasFavoritos
+		//		};
+
+		//	return View(viewModel);
+		//}
+
+		// Ação para adicionar o produto à lista selecionada
+
+		[HttpPost]
+		public async Task<IActionResult> AdicionarProdutoNaLista(int produtoId, int listaId)
+		{
+			var produto = await _context.Produto.FindAsync(produtoId);
+			var listaFavorito = await _context.Listadefavorito.FindAsync(listaId);
+
+			if (produto == null || listaFavorito == null)
+			{
+				return NotFound();
+			}
+			var relacao = new RelacaoProdutoLista
+			{
+				ProdutoId = produtoId,
+				ListadefavoritoId = listaId
+			};
+
+			_context.RelacaoProdutoListas.Add(relacao);
+			await _context.SaveChangesAsync();
+
+			return RedirectToAction("ListaFavoritos");
+		}
+
+		
+
+	}
 }

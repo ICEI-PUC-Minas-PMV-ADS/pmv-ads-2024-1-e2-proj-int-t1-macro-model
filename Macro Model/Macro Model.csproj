@@ -29,6 +29,7 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\LoginController.cs" />
+    <Compile Remove="Models\ListaFavoritosViewModel.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,6 +37,7 @@
     <None Include="Views\Lista\Detalhe.cshtml" />
     <None Include="Views\Lista\Editar.cshtml" />
     <None Include="Views\Lista\ListaFavoritos.cshtml" />
+    <None Include="Views\Lista\SelecionarLista.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

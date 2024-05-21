@@ -26,6 +26,22 @@ namespace Macro_Model.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Produtos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nome = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Nutricional = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    Restricao = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    TipoConteudoImagem = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Produtos", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Listadefavorito",
                 columns: table => new
                 {
@@ -45,24 +61,32 @@ namespace Macro_Model.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Produtos",
+                name: "RelacaoProdutoListas",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Nome = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Nutricional = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    Restricao = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    TipoConteudoImagem = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ListadefavoritoId = table.Column<int>(type: "int", nullable: true)
+                    ListadefavoritoId = table.Column<int>(type: "int", nullable: false),
+                    ProdutoId = table.Column<int>(type: "int", nullable: false),
+                    ProdutoId1 = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Produtos", x => x.Id);
+                    table.PrimaryKey("PK_RelacaoProdutoListas", x => new { x.ListadefavoritoId, x.ProdutoId });
                     table.ForeignKey(
-                        name: "FK_Produtos_Listadefavorito_ListadefavoritoId",
+                        name: "FK_RelacaoProdutoListas_Listadefavorito_ListadefavoritoId",
                         column: x => x.ListadefavoritoId,
                         principalTable: "Listadefavorito",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_RelacaoProdutoListas_Produtos_ProdutoId",
+                        column: x => x.ProdutoId,
+                        principalTable: "Produtos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_RelacaoProdutoListas_Produtos_ProdutoId1",
+                        column: x => x.ProdutoId1,
+                        principalTable: "Produtos",
                         principalColumn: "Id");
                 });
 
@@ -78,19 +102,27 @@ namespace Macro_Model.Migrations
                 column: "Cpf");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Produtos_ListadefavoritoId",
-                table: "Produtos",
-                column: "ListadefavoritoId");
+                name: "IX_RelacaoProdutoListas_ProdutoId",
+                table: "RelacaoProdutoListas",
+                column: "ProdutoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RelacaoProdutoListas_ProdutoId1",
+                table: "RelacaoProdutoListas",
+                column: "ProdutoId1");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Produtos");
+                name: "RelacaoProdutoListas");
 
             migrationBuilder.DropTable(
                 name: "Listadefavorito");
+
+            migrationBuilder.DropTable(
+                name: "Produtos");
 
             migrationBuilder.DropTable(
                 name: "Cadastro");

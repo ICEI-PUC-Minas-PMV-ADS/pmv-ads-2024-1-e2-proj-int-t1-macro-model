@@ -20,10 +20,10 @@ namespace Macro_Model.Models
         [ForeignKey("Cpf")]
         public Cadastro Cadastro { get; set; }
 
-        public virtual ICollection<Produto> Produtos { get; set; }
+		public virtual ICollection<RelacaoProdutoLista> RelacaoProdutoListas { get; set; }
 
 
-        [Required(ErrorMessage ="Nome obrigatório!")]
+		[Required(ErrorMessage ="Nome obrigatório!")]
         [DisplayName("Nome da Lista")]
         public string Nome { get; set; }
     }

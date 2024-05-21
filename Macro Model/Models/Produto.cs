@@ -34,6 +34,6 @@ namespace Macro_Model.Models
         [RegularExpression(@"^image\/(jpeg|png)$", ErrorMessage = "O tipo de conteúdo da imagem deve ser JPEG ou PNG.")]
         public string TipoConteudoImagem { get; set; }
 
-
-    }
+		public virtual ICollection<RelacaoProdutoLista> RelacaoProdutoListas { get; set; }
+	}
 }

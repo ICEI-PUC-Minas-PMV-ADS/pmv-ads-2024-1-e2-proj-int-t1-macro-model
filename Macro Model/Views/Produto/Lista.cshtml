@@ -2,6 +2,7 @@
 
 @{
 	ViewData["Title"] = "Lista";
+	var listasFavoritos = ViewBag.ListasFavoritos as List<Macro_Model.Models.Listadefavorito>;
 }
 
 
@@ -53,6 +54,22 @@
 							<a class="btn btn-warning" asp-action="Editar" asp-route-id="@item.Id">Editar</a>
 							<a class="btn btn-primary" asp-action="Detalhe" asp-route-id="@item.Id">Detalhes</a>
 							<a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+							<form asp-action="@Url.Action("AdicionarProdutoNaLista", new { id = item.Id })" style="display:inline;" method="post" style="margin-top:10px;">
+								<input type="hidden" name="produtoId" value="@item.Id" />
+								<div class="form-group">
+									<select class="form-control" name="listaId" required>
+										<option value="" disabled selected>Favoritos</option>
+										@if (listasFavoritos != null)
+										{
+											@foreach (var lista in ViewBag.ListasFavoritos)
+																	{
+												<option value="@lista.Id">@lista.Nome</option>
+											}
+										}
+									</select>
+								</div>
+								<button type="submit" class="btn btn-success">Adicionar à Lista</button>
+							</form>
 						</td>
 					</tr>
 				}
@@ -60,5 +77,7 @@
 		</table>
 	</div>
 </div>
+
+
 
 

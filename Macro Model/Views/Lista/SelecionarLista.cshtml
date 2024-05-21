@@ -1,0 +1,21 @@
+﻿@model Macro_Model.Models.Listadefavorito
+
+@{
+    ViewData["Title"] = "Selecionar Lista";
+}
+
+<h1>Selecionar Lista</h1>
+
+<form asp-action="AdicionarProdutoNaLista" method="post">
+    <input type="hidden" name="produtoId" value="@ViewBag.ProdutoId" />
+    <div class="form-group">
+        <label for="listaId">Selecione uma lista para adicionar o produto:</label>
+        <select class="form-control" id="listaId" name="listaId">
+            @foreach (var lista in ViewBag.ListasFavoritos)
+            {
+                <option value="@lista.Id">@lista.Nome</option>
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Adicionar</button>
+</form>

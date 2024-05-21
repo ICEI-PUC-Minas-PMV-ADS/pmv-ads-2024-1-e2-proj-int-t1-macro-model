@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Macro_Model.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240519173023_M01")]
+    [Migration("20240520053132_M01")]
     partial class M01
     {
         /// <inheritdoc />
@@ -86,9 +86,6 @@ namespace Macro_Model.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("ListadefavoritoId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -109,9 +106,27 @@ namespace Macro_Model.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ListadefavoritoId");
-
                     b.ToTable("Produtos");
+                });
+
+            modelBuilder.Entity("Macro_Model.Models.RelacaoProdutoLista", b =>
+                {
+                    b.Property<int>("ListadefavoritoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProdutoId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProdutoId1")
+                        .HasColumnType("int");
+
+                    b.HasKey("ListadefavoritoId", "ProdutoId");
+
+                    b.HasIndex("ProdutoId");
+
+                    b.HasIndex("ProdutoId1");
+
+                    b.ToTable("RelacaoProdutoListas");
                 });
 
             modelBuilder.Entity("Macro_Model.Models.Listadefavorito", b =>
@@ -123,11 +138,27 @@ namespace Macro_Model.Migrations
                     b.Navigation("Cadastro");
                 });
 
-            modelBuilder.Entity("Macro_Model.Models.Produto", b =>
+            modelBuilder.Entity("Macro_Model.Models.RelacaoProdutoLista", b =>
                 {
-                    b.HasOne("Macro_Model.Models.Listadefavorito", null)
-                        .WithMany("Produtos")
-                        .HasForeignKey("ListadefavoritoId");
+                    b.HasOne("Macro_Model.Models.Listadefavorito", "Listadefavorito")
+                        .WithMany("RelacaoProdutoListas")
+                        .HasForeignKey("ListadefavoritoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Macro_Model.Models.Produto", "Produto")
+                        .WithMany()
+                        .HasForeignKey("ProdutoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Macro_Model.Models.Produto", null)
+                        .WithMany("RelacaoProdutoListas")
+                        .HasForeignKey("ProdutoId1");
+
+                    b.Navigation("Listadefavorito");
+
+                    b.Navigation("Produto");
                 });
 
             modelBuilder.Entity("Macro_Model.Models.Cadastro", b =>
@@ -137,7 +168,12 @@ namespace Macro_Model.Migrations
 
             modelBuilder.Entity("Macro_Model.Models.Listadefavorito", b =>
                 {
-                    b.Navigation("Produtos");
+                    b.Navigation("RelacaoProdutoListas");
+                });
+
+            modelBuilder.Entity("Macro_Model.Models.Produto", b =>
+                {
+                    b.Navigation("RelacaoProdutoListas");
                 });
 #pragma warning restore 612, 618
         }

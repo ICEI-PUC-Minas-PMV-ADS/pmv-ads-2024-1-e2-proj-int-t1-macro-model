@@ -19,8 +19,9 @@ namespace Macro_Model.Models
                
         public DbSet<Cadastro> Cadastro { get; set; }
 
-        
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+		public DbSet<RelacaoProdutoLista> RelacaoProdutoListas { get; set; }
+
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
             // Define um índice único para a coluna Email
@@ -29,13 +30,20 @@ namespace Macro_Model.Models
                 .IsUnique();
 
 
-            modelBuilder.Entity<Listadefavorito>()
-                .HasOne(l => l.Cadastro)
-                .WithMany(c => c.Listadefavorito)
-                .HasForeignKey(c => c.Cpf);
-            base.OnModelCreating(modelBuilder);
+			modelBuilder.Entity<RelacaoProdutoLista>()
+				.HasKey(lp => new { lp.ListadefavoritoId, lp.ProdutoId });
 
-        }
+			modelBuilder.Entity<RelacaoProdutoLista>()
+				.HasOne(lp => lp.Listadefavorito)
+				.WithMany(lf => lf.RelacaoProdutoListas)
+				.HasForeignKey(lp => lp.ListadefavoritoId);
+
+			modelBuilder.Entity<RelacaoProdutoLista>()
+				.HasOne(lp => lp.Produto)
+				.WithMany()
+				.HasForeignKey(lp => lp.ProdutoId);
+
+		}
       
 
 

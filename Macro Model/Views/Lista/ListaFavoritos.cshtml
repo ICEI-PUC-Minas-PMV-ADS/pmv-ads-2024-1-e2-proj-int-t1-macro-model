@@ -23,7 +23,10 @@
 				<tr class="table-info">
 
 					<th style="text-align: center; vertical-align: middle;">
-						@Html.DisplayNameFor(model => model.Nome)
+						@Html.DisplayNameFor(model => model.First().Nome)
+					</th>
+					<th style="text-align: center; vertical-align: middle;">
+						@Html.DisplayName("Produtos")
 					</th>
 					<th style="text-align: center; vertical-align: middle;">
 						@Html.DisplayName("Gerenciar")
@@ -39,10 +42,18 @@
 						<td style="text-align: center; vertical-align: middle;">
 							@Html.DisplayFor(modelItem => item.Nome)
 						</td>
-
+						<td>
+							<ul>
+								@foreach (var produto in item.RelacaoProdutoListas.Select(r => r.Produto))
+								{
+									<li>@produto.Nome</li>
+									
+								}
+							</ul>
+						</td>
 						<td style="display:flex;width:100%;justify-content:center;flex-direction:column">
 							<a class="btn btn-warning" asp-action="Editar" asp-route-id="@item.Id">Editar</a>
-							<a class="btn btn-primary" asp-action="Detalhes" asp-route-id="@item.Id">Detalhes</a>							
+							<a class="btn btn-primary" asp-action="Detalhe" asp-route-id="@item.Id">Detalhes</a>							
 							<form method="post" action="@Url.Action("DeleteConfirmed", new { id = item.Id })" style="display:inline;">
 								<button style="width:100%" type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir esta lista?');">Excluir</button>
 							</form>
