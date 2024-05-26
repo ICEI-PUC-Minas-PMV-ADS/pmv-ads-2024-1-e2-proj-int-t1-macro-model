@@ -70,7 +70,7 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 |RF-005| Todos os campos no cadastro e login devem ser obrigatórios.   | Alta |
 |RF-006| Na tela de Alteração de Banners, o perfil administrador deve conseguir fazer upload da imagem, escolher quantos imagens terão.   | MÉDIA |
 |RF-007| A tela de Visualizar Item(botão de detalhes) permitirá o usuário visualizar os campos: Imagem do item; Título do Item; Informações Nutricionais ; Restrição Alimentícia   | MÉDIA |
-|RF-008| A tela alimentos deverá apresentar os botões: Filtrar por Ordem Alfabética.  | Alta |
+|RF-008| A tela alimentos deverá apresentar o botão: Filtrar por Ordem Alfabética.  | Alta |
 |RF-009| A tela de Criar Nova Pasta deverá ter os campos obrigatórios a preencher: Título da Pasta; Privacidade   | Alta |
 |RF-010| A tela de Alterar Foto deve ser apresentada ao clicar em Alterar Foto no menu esquerdo.   | Baixa |
 |RF-011| A tela de Adicionar Novo Item deverá ter os campos: Título do Item; Categoria; Inserir Imagem.   | Alta |
