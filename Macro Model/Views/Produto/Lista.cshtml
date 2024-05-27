@@ -3,12 +3,26 @@
 @{
 	ViewData["Title"] = "Lista";
 	var listasFavoritos = ViewBag.ListasFavoritos as List<Macro_Model.Models.Listadefavorito>;
+	var ordenacaoAtual = ViewBag.OrdenacaoAtual as string;
 }
 
 
 <div class="table-responsive-sm" style="margin:0px 20px;display:flex;flex-direction:column;justify-content:center;height:fit-content;align-items:center;padding-bottom:50px">
 	<div style="padding-bottom:30px; background-color:#fff; padding: 10px 15px;margin:20px auto;border-radius:20px">
 		<h1 style="text-align:center;padding:15px 0px">Produtos e Alimentos</h1>
+
+		@if (TempData["ErrorMessage"] != null)
+		{
+			<div class="alert alert-danger" role="alert">
+				@TempData["ErrorMessage"]
+			</div>
+		}
+
+		<div>
+			<label>Ordenar por: </label>
+			<a asp-action="Lista" asp-route-ordenacao="Nome" style="margin-bottom:3px" class="btn btn-primary btn-sm py-1 @(ordenacaoAtual == "Nome" ? "active" : "")">Nome</a>
+		</div>
+
 		<a asp-action="Produto" class="btn btn-success" style="margin-bottom:10px">Adicionar um novo produto</a>
 		<table class="table table-bordered">
 			<thead>
@@ -50,31 +64,33 @@
 							@Html.DisplayFor(modelItem => item.Restricao)
 						</td>
 
-						<td style="display:flex;width:100%;justify-content:center;flex-direction:column">
-							<a class="btn btn-warning" asp-action="Editar" asp-route-id="@item.Id">Editar</a>
-							<a class="btn btn-primary" asp-action="Detalhe" asp-route-id="@item.Id">Detalhes</a>
-							<a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-							<form asp-action="@Url.Action("AdicionarProdutoNaLista", new { id = item.Id })" style="display:inline;" method="post" style="margin-top:10px;">
+						<td style="display:flex;width:100%;justify-content:center;flex-direction:column;gap:2px">
+							<a class="btn btn-secondary btn-sm py-1" asp-action="Editar" asp-route-id="@item.Id">Editar</a>
+							<a class="btn btn-secondary btn-sm py-1" asp-action="Detalhe" asp-route-id="@item.Id">Detalhes</a>
+							<a class="btn btn-danger btn-sm py-1" asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
+							<form asp-controller="Lista" asp-action="AdicionarProdutoNaLista" method="post" style="margin-top:10px">
 								<input type="hidden" name="produtoId" value="@item.Id" />
 								<div class="form-group">
 									<select class="form-control" name="listaId" required>
 										<option value="" disabled selected>Favoritos</option>
 										@if (listasFavoritos != null)
 										{
-											@foreach (var lista in ViewBag.ListasFavoritos)
-																	{
+											@foreach (var lista in listasFavoritos)
+											{
 												<option value="@lista.Id">@lista.Nome</option>
 											}
 										}
 									</select>
 								</div>
-								<button type="submit" class="btn btn-success">Adicionar à Lista</button>
+								<button type="submit" class="btn btn-success btn-sm py-1" style="margin-top:4px;width:100%">Adicionar</button>
 							</form>
+							
 						</td>
 					</tr>
 				}
 			</tbody>
 		</table>
+		
 	</div>
 </div>
 

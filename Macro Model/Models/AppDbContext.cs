@@ -13,7 +13,7 @@ namespace Macro_Model.Models
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
 
-        public DbSet<Produto> Produto { get; set; }
+        public DbSet<Produto> Produtos { get; set; }
         		
 		public DbSet<Listadefavorito> Listadefavorito { get; set; }
                

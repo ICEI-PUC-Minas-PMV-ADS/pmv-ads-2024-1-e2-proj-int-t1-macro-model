@@ -1,36 +1,62 @@
 ﻿@model Macro_Model.Models.Listadefavorito
 
 @{
-    ViewData["Title"] = "Editar lista";
+	ViewData["Title"] = "Editar lista";
 }
 
 
 <div class="row" style="display:flex;justify-content:center;height:80vh;align-items:center">
-    <div class="col-md-4" style="background-color:#fff; padding: 30px 30px;border-radius:20px">
-        <h2 style="text-align:center;padding:15px 0px">Editar lista</h2>
+	<div class="col-md-4" style="background-color:#fff; padding: 30px 30px;border-radius:20px">
+		<h2 style="text-align:center;padding:15px 0px">Editar lista</h2>
 
-        <form asp-action="Editar">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            
-            <input type="hidden" asp-for="Cpf" />
-            <div class="form-group">
-                <label asp-for="Nome" class="control-label"></label>
-                <input asp-for="Nome" class="form-control" />
-                <span asp-validation-for="Nome" class="text-danger"></span>
-            </div>
-            </br>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" /> |
-                <a class="btn btn-info" asp-action="ListaFavoritos">Voltar para Lista</a>
-            </div>
-        </form>
+		<form asp-controller="Lista" asp-action="Editar" me >
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<input type="hidden" asp-for="Id" />
 
-    </div>
+			<input type="hidden" asp-for="Cpf" />
+			<div class="form-group">
+				<label asp-for="Nome" class="control-label"></label>
+				<input asp-for="Nome" class="form-control" />
+				<span asp-validation-for="Nome" class="text-danger"></span>
+			</div>
+			<hr />
+
+			<h2 style="text-align:center">Produtos na lista </h2>
+			<ul class="list-unstyled">
+				@foreach (var relacao in Model.RelacaoProdutoListas)
+				{
+					<li style="text-align:center;margin-bottom:2px">
+						@relacao.Produto.Nome
+						<button type="button" class="btn btn-danger btn-sm py-1" onclick="removeProduto(@Model.Id, @relacao.ProdutoId)">Remover</button>
+					</li>
+				}
+			</ul>
+
+			</br>
+			<div class="form-group text-center">
+				<input type="submit" value="Save" class="btn btn-primary" /> |
+				<a class="btn btn-info" asp-action="ListaFavoritos">Voltar para Lista</a>
+			</div>
+		</form>
+
+	</div>
 </div>
 
-
+<form id="deleteForm" asp-controller="Lista" asp-action="RemoverProduto" method="post" style="display:none;">
+	<input type="hidden" name="listaId" id="deleteFormListaId" />
+	<input type="hidden" name="produtoId" id="deleteFormProdutoId" />
+</form>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+	<script>
+		function removeProduto(listaId, produtoId) {
+			document.getElementById('deleteFormListaId').value = listaId;
+			document.getElementById('deleteFormProdutoId').value = produtoId;
+			document.getElementById('deleteForm').submit();
+		}
+	</script>
+	
 }

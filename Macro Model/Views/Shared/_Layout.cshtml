@@ -33,15 +33,15 @@
                         {
                             @if (User.IsInRole("Admin"))
                             {
-                                <li class="nav-item" >
+                                <li class="nav-item" style="width:110px">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Cadastro" asp-action="Usuario">Usuários</a>
                                 </li>
                             }
 
-                            <li class="nav-item" style="width:200px">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Produto" asp-action="Lista">Produto Listados</a>
+                            <li class="nav-item text-center " style="width:200px">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Produto" asp-action="Lista">Produtos e Alimentos</a>
                             </li>
-                            <li class="nav-item" style="margin-left:-50px">
+                            <li class="nav-item" style="margin-left:-20px">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Lista" asp-action="ListaFavoritos">Favoritos</a>
                             </li>
 
@@ -52,7 +52,8 @@
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                Olá, @User.Identity.Name <a class="nav-link text-dark" asp-controller="Cadastro" asp-action="Logout">Sair</a>
+                                Bem vindo! @User.Identity.Name
+                                <a class="nav-link text-dark btn btn-outline-secondary btn-sm py-1"  asp-controller="Cadastro" asp-action="Logout">Sair</a>
 
                             </li>
                         }

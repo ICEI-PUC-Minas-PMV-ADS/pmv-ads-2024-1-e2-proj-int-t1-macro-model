@@ -10,7 +10,7 @@
         <h2 style="text-align:center;padding:15px 0px">Dados da lista </h2>
 
         <hr />
-        <dl class="row">
+        <dl class="row" >
 @*             <dt class = "col-sm-2"> *@
 @*                 @Html.DisplayNameFor(model => model.Cadastro)
             </dt>
@@ -27,7 +27,22 @@
                 @Html.DisplayName("Produtos :")
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.RelacaoProdutoListas)
+                <ul class="list-unstyled">
+                    @if (Model.RelacaoProdutoListas != null)
+                    {
+                        @foreach (var relacao in Model.RelacaoProdutoListas)
+                        {
+                            @if (relacao.Produto != null)
+                            {
+                                <li>@relacao.Produto.Nome</li>
+                            }
+                        }
+                    }
+                    else
+                    {
+                        <li>Nenhum produto encontrado.</li>
+                    }
+                </ul>
             </dd>
         </dl>
         <div>

@@ -64,6 +64,13 @@ namespace Macro_Model
 			app.UseAuthentication();
 			app.UseAuthorization();
 
+			
+
+			app.MapControllerRoute(
+				name: "ListaDetalhe",
+				pattern: "Lista/Detalhe/{id}",
+				defaults: new { controller = "Lista", action = "Detalhe" });
+
 			app.MapControllerRoute(
 
 				name: "default",

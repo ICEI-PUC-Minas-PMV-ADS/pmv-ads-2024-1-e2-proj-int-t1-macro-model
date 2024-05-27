@@ -115,6 +115,32 @@ namespace Macro_Model.Controllers
 			
             if (ModelState.IsValid)
 			{
+				// Verificar se o nome de usuário já existe
+				var usuarioExistente = await _context.Cadastro.FirstOrDefaultAsync(u => u.Nome == cadastro.Nome);
+				if (usuarioExistente != null)
+				{
+					ModelState.AddModelError("Nome", "Nome de usuário já está em uso.");
+					return View(cadastro); // Retorna a view com o erro
+				}
+				// Verificar se o CPF já existe
+				var cpfExistente = await _context.Cadastro.FirstOrDefaultAsync(u => u.Cpf == cadastro.Cpf);
+				if (cpfExistente != null)
+				{
+					ModelState.AddModelError("Cpf", "CPF já está cadastrado.");
+				}
+
+				// Verificar se o e-mail já existe
+				var emailExistente = await _context.Cadastro.FirstOrDefaultAsync(u => u.Email == cadastro.Email);
+				if (emailExistente != null)
+				{
+					ModelState.AddModelError("Email", "E-mail já está cadastrado.");
+				}
+
+				// Se houver erros, retornar a view com os erros
+				if (!ModelState.IsValid)
+				{
+					return View(cadastro);
+				}
 
 				cadastro.Senha = BCrypt.Net.BCrypt.HashPassword(cadastro.Senha);
 				_context.Cadastro.Add(cadastro);
@@ -151,10 +177,6 @@ namespace Macro_Model.Controllers
 
 				cadastro.Senha = BCrypt.Net.BCrypt.HashPassword(cadastro.Senha);
 				_context.Cadastro.Update(cadastro);
-
-                cadastro.Senha = BCrypt.Net.BCrypt.HashPassword(cadastro.Senha);
-                _context.Cadastro.Update(cadastro);
-
 				await _context.SaveChangesAsync();
 				return RedirectToAction("Usuario");
 			}

@@ -23,15 +23,30 @@ namespace Macro_Model.Controllers
 
 		}
 
-        public async Task<IActionResult> Lista()
-        {
-			var produtos = _context.Produto.ToList();
-			ViewBag.ListasFavoritos = _context.Listadefavorito.ToList();
-			return View(produtos);
-			//return View(await _context.Produto.ToListAsync());
+		public async Task<IActionResult> Lista(string ordenacao)
+		{
+			var produtos = _context.Produtos.AsQueryable();
+
+			// Verifica se foi escolhida uma opção de ordenação
+			switch (ordenacao)
+			{
+				case "Nome":
+					produtos = produtos.OrderBy(p => p.Nome);
+					break;
+				
+				// Adicione mais casos conforme necessário
+				default:
+					produtos = produtos.OrderBy(p => p.Id); // Ordenação padrão
+					break;
+			}
+
+            ViewBag.ListasFavoritos = _context.Listadefavorito.ToList();
+            return View(produtos);
         }
 
-        
+
+     
+
         public IActionResult Produto()
 		{
             return View();
@@ -45,7 +60,7 @@ namespace Macro_Model.Controllers
             if (ModelState.IsValid)
             {
               
-			    _context.Produto.Add(produto);
+			    _context.Produtos.Add(produto);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Lista");
             }
@@ -58,7 +73,7 @@ namespace Macro_Model.Controllers
             if (id == null)
                 return NotFound();
 
-            var dados = await _context.Produto.FindAsync(id);
+            var dados = await _context.Produtos.FindAsync(id);
 
             if (dados == null)
                 return NotFound();
@@ -74,7 +89,7 @@ namespace Macro_Model.Controllers
 
             if (ModelState.IsValid)
             {
-                _context.Produto.Update(produto);
+                _context.Produtos.Update(produto);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Lista");
             }
@@ -86,7 +101,7 @@ namespace Macro_Model.Controllers
             if (id == null)
                 return NotFound();
 
-            var dados = await _context.Produto.FindAsync(id);
+            var dados = await _context.Produtos.FindAsync(id);
 
             if (dados == null)
                 return NotFound();
@@ -100,7 +115,7 @@ namespace Macro_Model.Controllers
             if (id == null)
                 return NotFound();
 
-            var dados = await _context.Produto.FindAsync(id);
+            var dados = await _context.Produtos.FindAsync(id);
 
             if (dados == null)
                 return NotFound();
@@ -115,12 +130,12 @@ namespace Macro_Model.Controllers
             if (id == null)
                 return NotFound();
 
-            var dados = await _context.Produto.FindAsync(id);
+            var dados = await _context.Produtos.FindAsync(id);
 
             if (dados == null)
                 return NotFound();
 
-            _context.Produto.Remove(dados);
+            _context.Produtos.Remove(dados);
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Lista");
