@@ -142,7 +142,9 @@ namespace Macro_Model.Controllers
 					return View(cadastro);
 				}
 
-				cadastro.Senha = BCrypt.Net.BCrypt.HashPassword(cadastro.Senha);
+                cadastro.Perfil = Perfil.User;
+
+                cadastro.Senha = BCrypt.Net.BCrypt.HashPassword(cadastro.Senha);
 				_context.Cadastro.Add(cadastro);
 				await _context.SaveChangesAsync();
 				return RedirectToAction("Login");

@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Drawing;
+using System.Security.Claims;
 using Macro_Model.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -186,7 +187,8 @@ namespace Macro_Model.Controllers
         [HttpPost]
         public async Task<IActionResult> AdicionarProdutoNaLista(int listaId, int produtoId)
         {
-            var listaFavoritos = await _context.Listadefavorito
+			
+			var listaFavoritos = await _context.Listadefavorito
                 .Include(l => l.RelacaoProdutoListas)
                 .FirstOrDefaultAsync(l => l.Id == listaId);
 

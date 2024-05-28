@@ -11,6 +11,8 @@
 	<div style="padding-bottom:30px; background-color:#fff; padding: 10px 15px;margin:20px auto;border-radius:20px">
 		<h1 style="text-align:center;padding:15px 0px">Produtos e Alimentos</h1>
 
+		
+
 		@if (TempData["ErrorMessage"] != null)
 		{
 			<div class="alert alert-danger" role="alert">
@@ -28,14 +30,14 @@
 			<thead>
 				<tr class="table-info">
 
-					<th style="text-align: center; vertical-align: middle;">
+@* 					<th style="text-align: center; vertical-align: middle;">
 						@Html.DisplayNameFor(model => model.Id)
-					</th>
+					</th> *@
 					<th style="text-align: center; vertical-align: middle;">
 						@Html.DisplayNameFor(model => model.Nome)
 					</th>
 					<th style="text-align: center; vertical-align: middle;">
-						@Html.DisplayNameFor(model => model.Nutricional)
+						@Html.DisplayName("Informações Nutricionais (por 100g) ")
 					</th>
 					<th style="text-align: center; vertical-align: middle;">
 						@Html.DisplayNameFor(model => model.Restricao)
@@ -51,9 +53,9 @@
 				{
 					<tr>
 
-						<td style="text-align: center; vertical-align: middle;">
+@* 						<td style="text-align: center; vertical-align: middle;">
 							@Html.DisplayFor(modelItem => item.Id)
-						</td>
+						</td> *@
 						<td style="text-align: center; vertical-align: middle;">
 							@Html.DisplayFor(modelItem => item.Nome)
 						</td>

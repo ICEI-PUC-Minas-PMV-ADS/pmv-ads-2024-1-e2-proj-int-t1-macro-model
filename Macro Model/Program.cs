@@ -21,6 +21,7 @@ namespace Macro_Model
 
 			builder.Services.AddHttpContextAccessor();
 
+
 			
 
 			builder.Services.AddDbContext<AppDbContext>(options =>
@@ -66,10 +67,10 @@ namespace Macro_Model
 
 			
 
-			app.MapControllerRoute(
-				name: "ListaDetalhe",
-				pattern: "Lista/Detalhe/{id}",
-				defaults: new { controller = "Lista", action = "Detalhe" });
+			//app.MapControllerRoute(
+			//	name: "ListaDetalhe",
+			//	pattern: "Lista/Detalhe/{id}",
+			//	defaults: new { controller = "Lista", action = "Detalhe" });
 
 			app.MapControllerRoute(
 
