@@ -19,7 +19,7 @@ execução das tarefas do projeto.
 ### Divisão de Papéis
 
 A equipe utiliza o Scrum como base para definição do processo de desenvolvimento.
--	Product Owner: Pedro Roberto Gomes da Silva Abadia
+-	Product Owner: Lucas Antonio Miranda da Silva
 -	Scrum Master: João Gabriel Barrozo Rocha
 -	Equipe de Desenvolvimento: , Jonathan Vaz de Avelar, Lucas Antonio Miranda da Silva, Pedro Roberto Gomes da Silva Abadia, Lafayete Queiroz Horta, João Gabriel Barrozo Rocha
 -	Equipe de Design: Lafayete Queiroz Horta
