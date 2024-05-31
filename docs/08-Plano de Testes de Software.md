@@ -36,7 +36,7 @@
 | Passos 	| Acessar a página principal da aplicação; Clicar no botão "Cadastrar"; Preencher os campos obrigatórios; Clicar no botão "Cadastrar". |
 |Critério de Êxito | Exigir todos os dados preenchidos.  |
 
-| **Caso de Teste** 	| **CT-06 – Todos os tipos de perfis após logados, na tela interna, terão um menu lateral esquerdo com as funções disponíveis. uma tela central onde serão apresentadas as telas internas, na parte superior esquerda deve ter o logotipo do site, na parte superior direita deve ter sobre o usuário logado: Foto; Nome de Usuário; Sair.** 	   |
+| **Caso de Teste** 	| **CT-06 – Todos os tipos de perfis após logados, na tela interna, terão um menu lateral direito, na parte superior esquerda deve ter o logotipo do site, na parte superior direita deve ter sobre o usuário logado: Nome de Usuário; Sair.** 	   |
 |:---:	|:---:	|
 |	Requisito Associado 	| RF-006 - Uma validação na parte superior direita, que deve ter informação sobre o usuário logado: Nome de Usuário; Sair.   . |
 | Objetivo do Teste 	| Verificar inserção dos dados informados. |
