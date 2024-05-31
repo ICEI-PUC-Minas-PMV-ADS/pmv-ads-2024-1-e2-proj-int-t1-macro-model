@@ -10,27 +10,27 @@ As personas levantadas durante o processo de entendimento do problema são apres
 
 | Persona | 1 |
 ---|---
-| <img src="img/Personas/Persona 1.jpg" width="150" height="150" /> | **Ana Santos** |
+| <img src="img/Personas/Persona 1.jpg" width="auto" height="250" /> | **Ana Santos** |
 | **Idade:** 28 **Profissão:** Atleta Profissional **Hobbies:** Alimentação e bem estar, caminhadas. | **Aplicativos:** Instagram, Apps bancários, Netflix, WhatsApp, Telegram. |
 | **Motivações:** Alcançar seu máximo potencial como atleta, melhorar seus tempos de corrida, prevenir lesões e manter um estado físico e mental ótimo. | **Preocupações:** Garantir que sua dieta forneça os nutrientes necessários para sustentar seu treinamento intenso e promover a recuperação muscular. |
 | Persona | 2 |
-| <img src="img/Personas/Persona 2.PNG" width="150" height="150" /> | **Carlos Lima** |
+| <img src="img/Personas/Persona 2.PNG" width="auto" height="250" /> | **Carlos Lima** |
 | **Idade:** 35 **Profissão:** Engenheiro Mecânico **Hobbies:** Permacultura, Literatura e nutrição. | **Aplicativos:** Facebook, Aplicativos de bancos, Whatsapp. |
 | **Motivações:** Promover a saúde pessoal, reduzir o impacto ambiental de sua dieta e viver de acordo com seus valores éticos. | **Preocupações:** Garantir que os alimentos que consome sejam livres de ingredientes de origem animal e atendam às suas necessidades nutricionais. |
 | Persona | 3 |
-| <img src="img/Personas/Persona 3.jpg" width="150" height="150" /> | **Maria Oliveira** |
+| <img src="img/Personas/Persona 3.jpg" width="auto" height="250" /> | **Maria Oliveira** |
 |**Idade:** 40 **Profissão:** Assistente Administrativo **Hobbies:** Horta doméstica e Confeitaria | **Aplicativos:** Facebook, Instagram, Whatsapp, Aplicativos de bancos. |
 |**Motivações:** Promover a saúde e o bem-estar de sua família, oferecendo alimentos saudáveis e equilibrados que se encaixem em sua rotina agitada. | **Preocupações:** Garantir que sua família consuma uma dieta nutritiva, mesmo com uma agenda lotada. |
 | Persona | 4 |
-| <img src="img/Personas/Persona 4.jpg" width="150" height="150" /> | **João Silva** |
+| <img src="img/Personas/Persona 4.jpg" width="auto" height="250" /> | **João Silva** |
 | **Idade:** 20 **Profissão:** Garsom  **Hobbies:** Economia, cutivo de cogumelos | **Aplicativos:** Facebook, Instagram, Whatsapp, Aplicativos de bancos, youtube. | | **Motivações:** Maximizar seu potencial acadêmico, promover sua saúde e bem-estar e desenvolver hábitos alimentares saudáveis que o acompanhem ao longo da vida. | 
  **Preocupações:** Garantir que sua dieta seja nutritiva e equilibrada, apesar das restrições de tempo e orçamento. |
 | Persona | 5 |
-| <img src="img/Personas/Persona 5.jpg" width="150" height="150" /> | **Larissa Mendes** |
+| <img src="img/Personas/Persona 5.jpg" width="auto" height="250" /> | **Larissa Mendes** |
 | **Idade:** 32 **Profissão:** Nutricionista  **Hobbies:** Nutrição, caminhada ao ar livre. | **Aplicativos:** Instagram, Skoob, Apps bancários, Netflix, WhatsApp, Telegram. | 
 |**Motivações:** Promover a saúde e o bem-estar de seus pacientes, fornecendo orientações nutricionais personalizadas que atendam às suas necessidades individuais.  | **Preocupações:** Garantir que suas recomendações nutricionais sejam baseadas em evidências científicas sólidas e dados precisos. |
 | Persona | 6 |
-| <img src="img/Personas/Persona 6.jpg" width="150" height="150" /> | **Pedro Oliveira** |
+| <img src="img/Personas/Persona 6.jpg" width="auto" height="250" /> | **Pedro Oliveira** |
 | **Idade:** 28 **Profissão:** Cozinheiro  **Hobbies:** Culinária, nutrição e bem estar | **Aplicativos:** Instagram, Apps bancários, Netflix, WhatsApp, Telegram e youtube. |
 | **Motivações:** Promover sua saúde e bem-estar, experimentar novos sabores e ingredientes, e compartilhar suas descobertas com sua comunidade online. **Preocupações:** Garantir que sua dieta seja nutritiva, equilibrada e sustentável. |
 
@@ -61,12 +61,12 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 ### Requisitos Funcionais
 
-|ID    | Descrição do Requisito  | Prioridade |
-|------|-----------------------------------------|----|
-|RF-001| Na página inicial, o site deve permitir um cadastro de conta. | ALTA | 
-|RF-002| Na página inicial, o site deve permitir realizar o login.   | ALTA |
-|RF-003| A página inicial deve ter um botão no menu para a tela “Quem Somos”, que dará mais detalhes sobre o site e o grupo desenvolvedor.   | Baixa |
-|RF-004| No cadastro de novo usuário, o sistema deverá consultar a disponibilidade do nome de usuário desejado, para que não existam perfis com nomes de usuário repetidos.   | Alta |
+|ID     | Descrição do Requisito  | Prioridade |
+|-------|-----------------------------------------|----|
+|RF-001 | Na página inicial, o site deve permitir um cadastro de conta. | ALTA | 
+|RF-002 | Na página inicial, o site deve permitir realizar o login.   | ALTA |
+|RF-003 | A página inicial deve ter um botão no menu para a tela “Quem Somos”, que dará mais detalhes sobre o site e o grupo desenvolvedor.   | Baixa |
+|RF-004 | No cadastro de novo usuário, o sistema deverá consultar a disponibilidade do nome de usuário desejado, para que não existam perfis com nomes de usuário repetidos.   | Alta |
 |RF-005| Todos os campos no cadastro e login devem ser obrigatórios.   | Alta |
 |RF-006| Na tela de Alteração de Banners, o perfil administrador deve conseguir fazer upload da imagem, escolher quantos imagens terão.   | MÉDIA |
 |RF-007| A tela de Visualizar Item(botão de detalhes) permitirá o usuário visualizar os campos: Imagem do item; Título do Item; Informações Nutricionais ; Restrição Alimentícia   | MÉDIA |
@@ -80,8 +80,8 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 ### Requisitos não Funcionais
 
-|ID     | Descrição do Requisito  |Prioridade |
-|-------|-------------------------|----|
+|  ID     | Descrição do Requisito  |Prioridade |
+|-------|----------------------------------|----|
 |RNF-001| A aplicação deve ser responsiva | MÉDIA | 
 |RNF-002| Aplicação deve permitir meios de compartilhamento Web. |  ALTA | 
 |RNF-003| A aplicação deve ser compatível com os navegadores. Deve ser compatível com os principais navegadores do mercado: Google Chrome, Firefox e Microsoft Edge. | ALTA | 
@@ -96,8 +96,8 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 O projeto está restrito pelos itens apresentados na tabela a seguir.
 
-|ID| Restrição                                             |
-|--|-------------------------------------------------------|
+|  ID  | Restrição                                             |
+|-------|-------------------------------------------------------|
 |RE-01| A aplicação deve ser entregue de forma plenamente funcional até 23/06/2024. |
 |RE-02| A aplicação deve ser desenvolvida exclusivamente pelos membros do grupo.|
 |RE-03| O aplicativo deve utilizar conhecimentos de SQL e Modelagem de Dados, Engenharia de Requisitos de Software, Programação Modular, Algoritmos e Estruturas de Dados, Desenvolvimento Web Back-End e Front-End e Fundamentos de Redes de Computadores.|
@@ -111,5 +111,6 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 
 ## Diagrama de Casos de Uso
-![Captura_de_tela_2024-03-06_212317](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-macro-model/assets/104217381/44b656cb-df95-48ab-b309-1ecd4c8e84a5)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t1-macro-model/assets/104217381/98d627ec-01c1-4210-b832-f47fef8573ea)
+
 
