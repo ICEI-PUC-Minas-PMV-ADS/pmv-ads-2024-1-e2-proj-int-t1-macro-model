@@ -38,5 +38,51 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t1-macro-mo
 
   |
 
+| **Caso de Teste** 	| **CT-04 – No cadastro de novo usuário, o sistema deverá consultar a disponibilidade do nome de usuário desejado.**  	   |
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-004 - erificar disponibilidade para que não existam perfis com nomes de usuários repetidos . |
+| Objetivo do Teste 	| Verificar inserção dos dados informados. |
+|Critério de Êxito | O sistema valida e informa se existe dado  |
+|Evidencia | 
 
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t1-macro-model/assets/145519272/f2209a40-ff7c-4b23-92d5-ce3dc727e3e2
+
+  |
+
+
+| **Caso de Teste** 	| **CT-05 – Todos os campos no cadastro e login devem ser obrigatórios.**	   |
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-005 - Verificar disponibilidade para que não existam perfis com nomes de usuários repetidos . |
+| Objetivo do Teste 	| Verificar inserção dos dados informados. |
+|Critério de Êxito | Exigir todos os dados preenchidos.  |
+|Evidencia | 
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t1-macro-model/assets/145519272/f2209a40-ff7c-4b23-92d5-ce3dc727e3e2
+
+  |
+
+
+| **Caso de Teste** 	| **CT-06 – Todos os campos no cadastro e login devem ser obrigatórios.**	   |
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-006 - Uma validação na parte superior direita, que deve ter informação sobre o usuário logado: Nome de Usuário; Sair. |
+| Objetivo do Teste 	| Verificar inserção dos dados informados. |
+|Critério de Êxito | Exigir todos os dados preenchidos.  |
+|Evidencia | 
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t1-macro-model/assets/145519272/f2209a40-ff7c-4b23-92d5-ce3dc727e3e2
+
+  |
+
+
+
+| **Caso de Teste** 	| **CT-07 – A tela de alimentos deverá apresentar os botões: Filtrar por Ordem Alfabética.** 	   |
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-007 - iltrar por Ordem Alfabética. |
+| Objetivo do Teste 	| Verificar inserção dos dados informados. |
+|Critério de Êxito | Exigir todos os dados preenchidos.  |
+|Evidencia | 
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t1-macro-model/assets/145519272/f2209a40-ff7c-4b23-92d5-ce3dc727e3e2
+
+  |
 
