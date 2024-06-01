@@ -25,23 +25,45 @@ namespace Macro_Model.Controllers
 
 		public async Task<IActionResult> Lista(string ordenacao)
 		{
-			var produtos = _context.Produtos.AsQueryable();
+            var usuarioNome = User.Identity.Name;
+            if (string.IsNullOrEmpty(usuarioNome))
+            {
+                return RedirectToAction("Login");
+            }
 
-			// Verifica se foi escolhida uma opção de ordenação
-			switch (ordenacao)
-			{
-				case "Nome":
-					produtos = produtos.OrderBy(p => p.Nome);
-					break;
-				
-				// Adicione mais casos conforme necessário
-				default:
-					produtos = produtos.OrderBy(p => p.Id); // Ordenação padrão
-					break;
-			}
+            var usuario = await _context.Cadastro
+                .Include(c => c.Listadefavorito)
+                .FirstOrDefaultAsync(c => c.Nome == usuarioNome);
 
-            ViewBag.ListasFavoritos = _context.Listadefavorito.ToList();
-            return View(produtos);
+            if (usuario == null)
+            {
+                return NotFound();
+            }
+
+            var produtos = _context.Produtos.AsQueryable();
+
+            // Verifica se foi escolhida uma opção de ordenação
+            switch (ordenacao)
+            {
+                case "Nome":
+                    produtos = produtos.OrderBy(p => p.Nome);
+                    break;
+
+                // Adicione mais casos conforme necessário
+                default:
+                    produtos = produtos.OrderBy(p => p.Id); // Ordenação padrão
+                    break;
+            }
+
+            var viewModel = new ProdutoViewModel
+            {
+				Produtos = await produtos.ToListAsync(),
+				ListasFavoritos = usuario.Listadefavorito.ToList(), // Convertendo HashSet para List
+				OrdenacaoAtual = ordenacao
+			};
+
+            return View(viewModel);
+   
         }
 
 

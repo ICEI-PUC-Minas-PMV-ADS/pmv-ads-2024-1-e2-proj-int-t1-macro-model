@@ -1,6 +1,7 @@
 ﻿using System.Data.SqlClient;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Web;
 
 namespace Macro_Model.Models
 {
@@ -12,6 +13,7 @@ namespace Macro_Model.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [RegularExpression(@"^\d+$", ErrorMessage = "O código do produto deve conter apenas números")]
 		public int Id { get; set; }
+        
 
         [Display(Name = "Nome")]
         [Required(ErrorMessage = "Obrigatório digitar um nome ")]
@@ -28,7 +30,8 @@ namespace Macro_Model.Models
 		[MaxLength(500, ErrorMessage = "Máximo de 500 caracteres.")]
 		public string Restricao { get; set; }
 
-     
+		[Display(Name = "Adicione uma imagem do produto. (máximo 5MB)")]
+		public string Imagem { get; set; }
 
         [Display(Name = "Tipo de Conteúdo da Imagem")]
         [RegularExpression(@"^image\/(jpeg|png)$", ErrorMessage = "O tipo de conteúdo da imagem deve ser JPEG ou PNG.")]

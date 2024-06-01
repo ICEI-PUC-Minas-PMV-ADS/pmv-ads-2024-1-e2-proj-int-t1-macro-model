@@ -3,6 +3,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Macro Model</title>
+    <link rel="stylesheet" href="~/css/_Layout.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Macro_Model.styles.css" asp-append-version="true" />
@@ -25,7 +26,7 @@
                     <ul class="navbar-nav mr-auto">
                         
                        
-                        <li class="nav-item" style="width:110px">
+                        <li class="nav-item" style="width:120px">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Cadastro" asp-action="Cadastro">Cadastre-se!</a>
                         </li>
 
@@ -33,15 +34,15 @@
                         {
                             @if (User.IsInRole("Admin"))
                             {
-                                <li class="nav-item" style="width:110px">
+                                <li class="nav-item" style="width:100px">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Cadastro" asp-action="Usuario">Usuários</a>
                                 </li>
                             }
 
-                            <li class="nav-item text-center " style="width:200px">
+                            <li class="nav-item text-center " style="width:170px">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Produto" asp-action="Lista">Produtos e Alimentos</a>
                             </li>
-                            <li class="nav-item" style="margin-left:-20px">
+                            <li class="nav-item" style="margin-left:10px">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Lista" asp-action="ListaFavoritos">Favoritos</a>
                             </li>
 

@@ -1,9 +1,12 @@
-﻿@model IEnumerable<Macro_Model.Models.Produto>
+﻿@model ProdutoViewModel
+
 
 @{
 	ViewData["Title"] = "Lista";
-	var listasFavoritos = ViewBag.ListasFavoritos as List<Macro_Model.Models.Listadefavorito>;
-	var ordenacaoAtual = ViewBag.OrdenacaoAtual as string;
+	var listasFavoritos = Model.ListasFavoritos;
+	var ordenacaoAtual = Model.OrdenacaoAtual;
+	// var listasFavoritos = ViewBag.ListasFavoritos as List<Macro_Model.Models.Listadefavorito>;
+	// var ordenacaoAtual = ViewBag.OrdenacaoAtual as string;
 }
 
 
@@ -31,16 +34,16 @@
 				<tr class="table-info">
 
 @* 					<th style="text-align: center; vertical-align: middle;">
-						@Html.DisplayNameFor(model => model.Id)
+						@Html.DisplayNameFor(model => model.Produtos.First().Id)
 					</th> *@
 					<th style="text-align: center; vertical-align: middle;">
-						@Html.DisplayNameFor(model => model.Nome)
+						@Html.DisplayNameFor(model => model.Produtos.First().Nome)
 					</th>
 					<th style="text-align: center; vertical-align: middle;">
 						@Html.DisplayName("Informações Nutricionais (por 100g) ")
 					</th>
 					<th style="text-align: center; vertical-align: middle;">
-						@Html.DisplayNameFor(model => model.Restricao)
+						@Html.DisplayNameFor(model => model.Produtos.First().Restricao)
 					</th>
 					<th style="text-align: center; vertical-align: middle;">
 						@Html.DisplayName("Gerenciar")
@@ -49,7 +52,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				@foreach (var item in Model)
+				@foreach (var item in Model.Produtos)
 				{
 					<tr>
 

@@ -1,0 +1,19 @@
+﻿@model List<Macro_Model.Models.Listadefavorito>
+
+@if (Model != null && Model.Any())
+{
+    <select class="form-control" name="listaId" required>
+        <option value="" disabled selected>Favoritos</option>
+        @foreach (var lista in Model)
+        {
+            <option value="@lista.Id">@lista.Nome</option>
+        }
+    </select>
+}
+else
+{
+    <select class="form-control" name="listaId" required>
+        <option value="" disabled selected>Favoritos</option>
+        <option disabled>Nenhuma lista encontrada</option>
+    </select>
+}

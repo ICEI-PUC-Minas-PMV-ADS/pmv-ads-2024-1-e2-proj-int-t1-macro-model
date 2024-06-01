@@ -187,10 +187,13 @@ namespace Macro_Model.Controllers
         [HttpPost]
         public async Task<IActionResult> AdicionarProdutoNaLista(int listaId, int produtoId)
         {
-			
+			// Obtém o userId do usuário logado
+			var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            			
+
 			var listaFavoritos = await _context.Listadefavorito
                 .Include(l => l.RelacaoProdutoListas)
-                .FirstOrDefaultAsync(l => l.Id == listaId);
+                .FirstOrDefaultAsync(l => l.Id == listaId && l.Cadastro.Cpf == userId);
 
             if (listaFavoritos == null)
             {

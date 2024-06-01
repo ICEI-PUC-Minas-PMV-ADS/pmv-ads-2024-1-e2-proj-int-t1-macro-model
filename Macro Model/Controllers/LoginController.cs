@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 ﻿using System.Diagnostics;
 using System.Security.Claims;
 using Macro_Model.Models;
@@ -88,7 +88,7 @@ namespace Macro_Model.Controllers
 
 	}
 }
-=======
+
 ﻿//using System.Diagnostics;
 //using System.Security.Claims;
 //using Macro_Model.Models;
@@ -116,4 +116,3 @@ namespace Macro_Model.Controllers
 
 //    }
 //}
->>>>>>> 5cbf18c9b84570393ab4a5d15b52e40679f3d6a4
