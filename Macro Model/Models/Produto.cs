@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Web;
+using System.Runtime.CompilerServices;
 
 namespace Macro_Model.Models
 {
@@ -19,6 +20,11 @@ namespace Macro_Model.Models
         [Required(ErrorMessage = "Obrigatório digitar um nome ")]
         [MaxLength(50, ErrorMessage = "Máximo de 50 caracteres.")]
         public string Nome { get; set; }
+
+        [Display(Name = "Calorias")]
+        [Required(ErrorMessage = "Digite um valor calórico referente à 100g.")]
+		[Range(0, 999999, ErrorMessage = "O valor máximo permitido é 999.999 kcal.")]
+		public decimal Caloria { get; set; }
 
         [Display(Name = "Informações Nutricionais")]
         [Required(ErrorMessage = "Obrigatório digitar uma relação nutricional")]

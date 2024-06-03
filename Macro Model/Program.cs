@@ -1,6 +1,6 @@
 
 using Macro_Model.Models;
-
+using System.Globalization;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using SixLabors.ImageSharp.Web.Caching;
@@ -67,10 +67,6 @@ namespace Macro_Model
 
 			
 
-			//app.MapControllerRoute(
-			//	name: "ListaDetalhe",
-			//	pattern: "Lista/Detalhe/{id}",
-			//	defaults: new { controller = "Lista", action = "Detalhe" });
 
 			app.MapControllerRoute(
 

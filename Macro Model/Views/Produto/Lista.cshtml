@@ -1,12 +1,11 @@
-﻿@model ProdutoViewModel
+﻿@model Macro_Model.Models.ProdutoViewModel
 
 
 @{
 	ViewData["Title"] = "Lista";
 	var listasFavoritos = Model.ListasFavoritos;
 	var ordenacaoAtual = Model.OrdenacaoAtual;
-	// var listasFavoritos = ViewBag.ListasFavoritos as List<Macro_Model.Models.Listadefavorito>;
-	// var ordenacaoAtual = ViewBag.OrdenacaoAtual as string;
+	
 }
 
 
@@ -26,6 +25,8 @@
 		<div>
 			<label>Ordenar por: </label>
 			<a asp-action="Lista" asp-route-ordenacao="Nome" style="margin-bottom:3px" class="btn btn-primary btn-sm py-1 @(ordenacaoAtual == "Nome" ? "active" : "")">Nome</a>
+			<a asp-action="Lista" asp-route-ordenacao="Calorias" style="margin-bottom:3px" class="btn btn-primary btn-sm py-1 @(ordenacaoAtual == "Calorias" ? "active" : "")">Maior Calorias</a>
+			<a asp-action="Lista" asp-route-ordenacao="CaloriasMenor" style="margin-bottom:3px" class="btn btn-primary btn-sm py-1 @(ordenacaoAtual == "CaloriasMenor" ? "active" : "")">Menor Calorias</a>
 		</div>
 
 		<a asp-action="Produto" class="btn btn-success" style="margin-bottom:10px">Adicionar um novo produto</a>
@@ -33,11 +34,14 @@
 			<thead>
 				<tr class="table-info">
 
-@* 					<th style="text-align: center; vertical-align: middle;">
-						@Html.DisplayNameFor(model => model.Produtos.First().Id)
-					</th> *@
+					<th style="text-align: center; vertical-align: middle;">
+						@Html.DisplayName("Imagem")
+					</th>
 					<th style="text-align: center; vertical-align: middle;">
 						@Html.DisplayNameFor(model => model.Produtos.First().Nome)
+					</th>
+					<th style="text-align: center; vertical-align: middle;white-space: nowrap;">
+						@Html.DisplayName("Calorias por 100g ")
 					</th>
 					<th style="text-align: center; vertical-align: middle;">
 						@Html.DisplayName("Informações Nutricionais (por 100g) ")
@@ -56,11 +60,23 @@
 				{
 					<tr>
 
-@* 						<td style="text-align: center; vertical-align: middle;">
-							@Html.DisplayFor(modelItem => item.Id)
-						</td> *@
+						<td style="text-align: center; vertical-align: middle;">
+							@if (!string.IsNullOrEmpty(item.Imagem))
+							{
+								<!-- Use o caminho absoluto para a imagem -->
+								<img src="@Url.Content("~/imagens/" + item.Imagem)" alt="Imagem do Produto" style="max-width: 100px; max-height: 100px;" />
+							}
+							else
+							{
+								<span>Nenhuma imagem disponível</span>
+							}
+						</td>
+
 						<td style="text-align: center; vertical-align: middle;">
 							@Html.DisplayFor(modelItem => item.Nome)
+						</td>
+						<td style="text-align: center; vertical-align: middle;white-space: nowrap;">
+							@item.Caloria kcal
 						</td>
 						<td style="text-align: center; vertical-align: middle;">
 							@Html.DisplayFor(modelItem => item.Nutricional)

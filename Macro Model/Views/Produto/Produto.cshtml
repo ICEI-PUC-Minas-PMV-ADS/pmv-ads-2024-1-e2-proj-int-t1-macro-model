@@ -1,4 +1,4 @@
-﻿@model Macro_Model.Models.Produto
+﻿@model Macro_Model.Models.ProdutoViewModel
 @{
 	ViewData["Title"] = "Produto";
 }
@@ -14,9 +14,22 @@
 
 			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
+		
+
+			<div class="form-group">
+				<label asp-for="Imagem" class="control-label"></label>
+				<input type="file" name="image" class="form-control" />
+				<span asp-validation-for="Imagem" class="text-danger"></span>
+			</div>
+
 			<div class="form-group">
 				<label asp-for="Nome" class="control-label"></label>
 				<input asp-for="Nome" class="form-control" placeholder="Insira seu nome completo" />
+			</div>
+
+			<div class="form-group">
+				<label asp-for="Caloria" class="control-label"></label>
+				<input asp-for="Caloria" class="form-control" placeholder="Quantas calorias em 100g ?" />
 			</div>
 
 			<div class="form-group">
