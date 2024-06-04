@@ -27,8 +27,8 @@ Segue o link abaixo da nossa aplicação em desenvolvimento. Mas que já possibi
 
 https://macromodel.azurewebsites.net/
 
-Usuários criados = > Login: user@gmail.com - Senha:123456
-
+Usuários criados = > Login: user@gmail.com - Senha:user123456
+Ou crie um para teste. :D
 
 # Documentação
 
