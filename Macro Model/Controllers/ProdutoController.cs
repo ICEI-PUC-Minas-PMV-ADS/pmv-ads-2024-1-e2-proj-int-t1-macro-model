@@ -8,6 +8,7 @@ using static System.Net.Mime.MediaTypeNames;
 using System.IO;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Hosting;
+using SixLabors.ImageSharp;
 
 
 namespace Macro_Model.Controllers
@@ -86,69 +87,73 @@ namespace Macro_Model.Controllers
         [HttpPost]
         public async Task<IActionResult> Produto(ProdutoViewModel model, IFormFile imagem)
         {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    // Verifica se foi enviado um arquivo de imagem e se é válido
-                    if (imagem != null && imagem.Length > 0 && IsImagemValida(imagem))
-                    {
-                        // Define o caminho onde a imagem será salva
-                        var imagePath = Path.Combine(_env.WebRootPath, "imagens");
 
-                        // Verifica se o diretório existe, senão cria
-                        if (!Directory.Exists(imagePath))
-                        {
-                            Directory.CreateDirectory(imagePath);
-                        }
 
-                        // Define um nome único para o arquivo
-                        var fileName = Guid.NewGuid().ToString() + Path.GetExtension(imagem.FileName);
+			if (ModelState.IsValid)
+			{
+				try
+				{
+					// Verifica se foi enviado um arquivo de imagem e se é válido
+					if (imagem != null && imagem.Length > 0 && IsImagemValida(imagem))
+					{
+						Console.WriteLine("Imagem Ok ");
+						// Define o caminho onde a imagem será salva
+						var imagePath = Path.Combine(_env.WebRootPath, "imagens");
 
-                        // Define o caminho completo do arquivo
-                        var filePath = Path.Combine(imagePath, fileName);
+						// Verifica se o diretório existe, senão cria
+						if (!Directory.Exists(imagePath))
+						{
+							Directory.CreateDirectory(imagePath);
+						}
 
-                        // Salva a imagem no diretório
-                        using (FileStream stream = new FileStream(filePath, FileMode.Create))
-                        {
-                            await imagem.CopyToAsync(stream);
-                        }
+						// Define um nome único para o arquivo
+						var fileName = Guid.NewGuid().ToString() + Path.GetExtension(imagem.FileName);
 
-                        // Atualiza o caminho da imagem no modelo
-                        model.Imagem = "/imagens/" + fileName;
-                    }
+						// Define o caminho completo do arquivo
+						var filePath = Path.Combine(imagePath, fileName);
 
-                    // Converte ProdutoViewModel para Produto
-                    var produto = new Produto
-                    {
-                        Nome = model.Nome,
-                        Nutricional = model.Nutricional,
-                        Restricao = model.Restricao,
-                        Imagem = model.Imagem // Adiciona o caminho da imagem
-                    };
+						// Salva a imagem no diretório
+						using (FileStream stream = new FileStream(filePath, FileMode.Create))
+						{
+							await imagem.CopyToAsync(stream);
+						}
 
-                    // Adiciona o produto ao contexto e salva no banco de dados
-                    _context.Produtos.Add(produto);
-                    await _context.SaveChangesAsync();
+						// Atualiza o caminho da imagem no modelo
+						model.Imagem = "/imagens/" + fileName;
+					}
 
-                    // Redireciona para a página de lista de produtos
-                    return RedirectToAction("Lista");
-                }
-                catch (IOException ex)
-                {
-                    // Trata exceções de E/S (pode ocorrer ao salvar a imagem)
-                    ModelState.AddModelError("", "Erro de E/S ao salvar a imagem.");
-                }
-                catch (Exception ex)
-                {
-                    // Trata outras exceções genéricas
-                    ModelState.AddModelError("", "Ocorreu um erro ao cadastrar o produto. Por favor, tente novamente.");
-                }
-            }
+					// Converte ProdutoViewModel para Produto
+					var produto = new Produto
+					{
+					
+						Nome = model.Nome,
+						Nutricional = model.Nutricional,
+						Restricao = model.Restricao,
+						Imagem = model.Imagem // Adiciona o caminho da imagem
+					};
 
-            // Se houver erros de validação ou se a imagem não for válida, retorna para a view com os erros
-            return View(model);
-        }
+					// Adiciona o produto ao contexto e salva no banco de dados
+					_context.Produtos.Add(produto);
+					await _context.SaveChangesAsync();
+
+					// Redireciona para a página de lista de produtos
+					return RedirectToAction("Lista");
+				}
+				catch (IOException ex)
+				{
+					// Trata exceções de E/S (pode ocorrer ao salvar a imagem)
+					ModelState.AddModelError("", "Erro de E/S ao salvar a imagem.");
+				}
+				catch (Exception ex)
+				{
+					// Trata outras exceções genéricas
+					ModelState.AddModelError("", "Ocorreu um erro ao cadastrar o produto. Por favor, tente novamente.");
+				}
+			}
+
+			//Se houver erros de validação ou se a imagem não for válida, retorna para a view com os erros
+			return View(model);
+		}
 
         // Verifica se o arquivo é uma imagem
         private bool IsImagemValida(IFormFile file)
@@ -173,24 +178,78 @@ namespace Macro_Model.Controllers
 
 			if (dados == null)
 				return NotFound();
-
-			return View(dados);
-		}
+            var produtoViewModel = new ProdutoViewModel
+            {
+                Id = dados.Id,
+                Nome = dados.Nome,
+                Caloria = dados.Caloria,
+                Nutricional = dados.Nutricional,
+                Restricao = dados.Restricao,
+                Imagem = dados.Imagem
+            };
+            return View(produtoViewModel);
+        }
 
 		[HttpPost]
-		public async Task<IActionResult> Editar(int? id, Produto produto)
+		public async Task<IActionResult> Editar(int? id, ProdutoViewModel produtoViewModel, IFormFile imagem)
 		{
-			if (id != produto.Id)
-				return NotFound();
+            if (id != produtoViewModel.Id)
+                return NotFound();
+            if (id != produtoViewModel.Id)
+                return NotFound();
 
-			if (ModelState.IsValid)
-			{
-				_context.Produtos.Update(produto);
-				await _context.SaveChangesAsync();
-				return RedirectToAction("Lista");
-			}
-			return View();
-		}
+            if (ModelState.IsValid)
+            {
+                var produto = await _context.Produtos.FindAsync(id);
+                if (produto == null)
+                    return NotFound();
+
+                // Atualizar propriedades do produto
+                produto.Nome = produtoViewModel.Nome;
+                produto.Caloria = produtoViewModel.Caloria;
+                produto.Nutricional = produtoViewModel.Nutricional;
+                produto.Restricao = produtoViewModel.Restricao;
+
+                // Manter a imagem atual se uma nova imagem não for fornecida
+                if (imagem != null && imagem.Length > 0 && IsImagemValida(imagem))
+                {
+                    // Define o caminho onde a imagem será salva
+                    var imagePath = Path.Combine(_env.WebRootPath, "imagens");
+
+                    // Verifica se o diretório existe, senão cria
+                    if (!Directory.Exists(imagePath))
+                    {
+                        Directory.CreateDirectory(imagePath);
+                    }
+
+                    // Define um nome único para o arquivo
+                    var fileName = Guid.NewGuid().ToString() + Path.GetExtension(imagem.FileName);
+
+                    // Define o caminho completo do arquivo
+                    var filePath = Path.Combine(imagePath, fileName);
+
+                    // Salva a imagem no diretório
+                    using (FileStream stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await imagem.CopyToAsync(stream);
+                    }
+
+                    // Atualiza o caminho da imagem no modelo
+                    produto.Imagem = "/imagens/" + fileName;
+                }
+
+                // Atualiza o produto no banco de dados
+                _context.Produtos.Update(produto);
+                await _context.SaveChangesAsync();
+
+                // Redireciona para a página de lista de produtos
+                return RedirectToAction("Lista");
+            }
+
+            return View(produtoViewModel);
+
+        }
+
 
 		public async Task<IActionResult> Detalhe(int? id)
 		{
@@ -239,37 +298,37 @@ namespace Macro_Model.Controllers
 		}
 
 
-		[HttpPost]
-		public async Task<IActionResult> UploadImagem(IFormFile arquivo)
-		{
-			if (arquivo == null || arquivo.Length == 0)
-			{
-				return BadRequest("Nenhum arquivo enviado.");
-			}
+		//[HttpPost]
+		//public async Task<IActionResult> UploadImagem(IFormFile arquivo)
+		//{
+		//	if (arquivo == null || arquivo.Length == 0)
+		//	{
+		//		return BadRequest("Nenhum arquivo enviado.");
+		//	}
 
-			var extensao = Path.GetExtension(arquivo.FileName);
-			var tipoConteudo = arquivo.ContentType;
+		//	var extensao = Path.GetExtension(arquivo.FileName);
+		//	var tipoConteudo = arquivo.ContentType;
 
-			// Verificar se a extensão e o tipo de conteúdo correspondem a JPEG ou PNG
-			if (extensao != ".jpg" && extensao != ".jpeg" && extensao != ".png")
-			{
-				return BadRequest("O arquivo deve ser do tipo JPEG ou PNG.");
-			}
+		//	// Verificar se a extensão e o tipo de conteúdo correspondem a JPEG ou PNG
+		//	if (extensao != ".jpg" && extensao != ".jpeg" && extensao != ".png")
+		//	{
+		//		return BadRequest("O arquivo deve ser do tipo JPEG ou PNG.");
+		//	}
 
-			// Salvar a imagem em uma pasta específica
-			var nomeArquivo = Guid.NewGuid().ToString() + extensao;
-			var caminhoArquivo = Path.Combine(_env.WebRootPath, "imagens", nomeArquivo);
+		//	// Salvar a imagem em uma pasta específica
+		//	var nomeArquivo = Guid.NewGuid().ToString() + extensao;
+		//	var caminhoArquivo = Path.Combine(_env.WebRootPath, "imagens", nomeArquivo);
 
-			using (var stream = new FileStream(caminhoArquivo, FileMode.Create))
-			{
-				await arquivo.CopyToAsync(stream);
-			}
+		//	using (var stream = new FileStream(caminhoArquivo, FileMode.Create))
+		//	{
+		//		await arquivo.CopyToAsync(stream);
+		//	}
 
-			// Salvar informações da imagem no banco de dados, como caminho e tipo de conteúdo
-			// Você pode associar essas informações ao seu objeto Produto
+		//	// Salvar informações da imagem no banco de dados, como caminho e tipo de conteúdo
+		//	// Você pode associar essas informações ao seu objeto Produto
 
-			return Ok(new { caminho = "/imagens/" + nomeArquivo }); // Retorna o caminho da imagem
-		}
+		//	return Ok(new { caminho = "/imagens/" + nomeArquivo }); // Retorna o caminho da imagem
+		//}
 
 
         

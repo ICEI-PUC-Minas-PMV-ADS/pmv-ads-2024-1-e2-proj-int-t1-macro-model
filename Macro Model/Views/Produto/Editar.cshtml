@@ -1,4 +1,4 @@
-﻿@model Macro_Model.Models.Produto
+﻿@model Macro_Model.Models.ProdutoViewModel
 
 @{
     ViewData["Title"] = "Editar";
@@ -9,32 +9,25 @@
 <div class="row" style="display:flex;justify-content:center;height:80vh;align-items:center">
     <div class="col-md-4" style="background-color:#fff; padding: 30px 30px;border-radius:20px">
         <h2 style="text-align:center;padding:15px 0px">Editar alimento ou produto</h2>
-        <form asp-action="Editar" enctype="multipart/form-data">
+        <form method="post" asp-action="Editar" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
+
             @if (!string.IsNullOrEmpty(Model.Imagem))
             {
-                <div class="form-group text-center">
+@*                 <div class="form-group text-center">
                     <img src="@Model.Imagem" alt="Imagem do produto" style="max-width:100%; max-height:200px;" />
+                </div> *@
+                <div class="form-group text-center">
+                    <img src="@Url.Content(Model.Imagem)" alt="Imagem do produto" style="max-width:100%; max-height:200px;" />
                 </div>
             }
 
             <div class="form-group">
                 <label asp-for="Imagem" class="control-label"></label>
-                <input asp-for="Imagem" class="form-control" readonly />
+                <input type="file" name="imagem" class="form-control" />
                 <span asp-validation-for="Imagem" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="Imagem" class="control-label">Nova Imagem</label>
-                <input type="file" name="image" class="form-control" />
-                <span asp-validation-for="Imagem" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" readonly />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>
 
             <div class="form-group">
                 <label asp-for="Nome" class="control-label"></label>
