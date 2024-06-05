@@ -48,7 +48,7 @@
 |	Requisito Associado 	| RF-007 - Filtrar por Ordem Alfabética.  . |
 | Objetivo do Teste 	| Verificar inserção dos dados informados. |
 | Passos 	| Acessar a página "Produtos e Alimentos" da aplicação; Localizar na página onde está escrito : "Ordernar por:" ; E clicar em "Nome". |
-|Critério de Êxito | Validção de lista alfabetica.  |
+|Critério de Êxito | Validação de lista alfabetica.  |
 
 
 
