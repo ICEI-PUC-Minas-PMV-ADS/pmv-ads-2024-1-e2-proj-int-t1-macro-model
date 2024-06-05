@@ -109,17 +109,53 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t1-macro-mo
   |
 
 
-| **Caso de Teste** 	| **CT-08 – A tela de alimentos deverá apresentar os botões: Filtrar por Nome, Maior Cal, Menor Cal.** 	   |
+| **Caso de Teste** 	| **CT-08 – A tela de Adicionar Novo Item deverá ter os campos: Título do Item; Categoria; Inserir Imagem.** 	   |
 |:---:	|:---:	|
-|	Requisito Associado 	| RF-007 - Filtro de encontro para os alimentos . |
+|	Requisito Associado 	| RF-008 - Verificar todos os campos preenchidos. |
 | Objetivo do Teste 	| Verificar inserção dos dados informados. |
 |Critério de Êxito | Exigir todos os dados preenchidos.  |
-| Resultado 	| Uso de filtro funcional. |
+| Resultado 	| Salvar informações atribuidas. |
 |Evidencia |
 
 
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t1-macro-model/assets/145519272/93b61aa0-302d-4a16-af6e-557823731292
 
 
 
  |
 
+
+| **Caso de Teste** 	| **CT-09 – A tela de Visualizar Item permite ao usuário visualizar os campos: Imagem do item; Título do item; Categoria e permitir o mesmo editar.** 	   |
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-009 - Verificar veracidade de ação. |
+| Objetivo do Teste 	| Verificar inserção dos dados informados. |
+|Critério de Êxito | Exigir exibição do artigo.  |
+| Resultado 	| Salvar informações atribuidas. |
+|Evidencia |
+
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t1-macro-model/assets/145519272/877eef3d-acf8-460a-ba90-b33c37235efc
+
+
+
+ |
+
+
+| **Caso de Teste** 	| **CT-10 – O botão Excluir Item deverá excluir o item do cartão.** 	   |
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-010 - Verificar veracidade de ação. |
+| Objetivo do Teste 	| Verificar inserção dos dados informados. |
+|Critério de Êxito | Exigir exito na aplicação.  |
+| Resultado 	| Salvar informações atribuidas. |
+|Evidencia |
+
+
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t1-macro-model/assets/145519272/f2a59c42-9bf5-49f8-939d-72e883237cbd
+
+
+
+
+ |
+ 
