@@ -43,15 +43,30 @@
 | Passos 	| Acessar a página principal da aplicação; Clicar no botão "Login"; Preencher os campos obrigatórios; Clicar no botão "Login". |
 |Critério de Êxito | Tem um usuário cadastrado, e realizar o login.  |
 
-| **Caso de Teste** 	| **CT-07 – A tela de alimentos deverá apresentar os botões: Filtrar por Ordem Alfabética.** 	   |
+| **Caso de Teste** 	| **CT-07 – A tela de alimentos deverá apresentar os botões: Filtrar por Nome, Maior Cal, Menor Cal.** 	   |
 |:---:	|:---:	|
 |	Requisito Associado 	| RF-007 - Filtrar por Ordem Alfabética.  . |
 | Objetivo do Teste 	| Verificar inserção dos dados informados. |
 | Passos 	| Acessar a página "Produtos e Alimentos" da aplicação; Localizar na página onde está escrito : "Ordernar por:" ; E clicar em "Nome". |
 |Critério de Êxito | Validação de lista alfabetica.  |
 
+| **Caso de Teste** 	| **CT-08 – A tela de Adicionar Novo Item deverá ter os campos: Título do Item; Categoria; Inserir Imagem.** 	   |
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-008 - Verificar todos os campos preenchidos. |
+| Objetivo do Teste 	| Verificar inserção dos dados informados. |
+|Critério de Êxito | Exigir todos os dados preenchidos.  |
 
+| **Caso de Teste** 	| **CT-09 – A tela de Visualizar Item permite ao usuário visualizar os campos: Imagem do item; Título do item; Categoria e permitir o mesmo editar.** 	   |
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-009 - Verificar veracidade de ação. |
+| Objetivo do Teste 	| Verificar inserção dos dados informados. |
+|Critério de Êxito | Exigir exibição do artigo.  |
 
+| **Caso de Teste** 	| **CT-10 – O botão Excluir Item deverá excluir o item do cartão.** 	   |
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-010 - Verificar veracidade de ação. |
+| Objetivo do Teste 	| Verificar inserção dos dados informados. |
+|Critério de Êxito | Exigir exito na aplicação.  |
 
 
 
