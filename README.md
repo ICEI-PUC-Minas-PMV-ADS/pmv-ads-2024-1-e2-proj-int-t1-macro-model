@@ -6,7 +6,7 @@
 
 `SEMESTRE`
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+Aplicação intuitiva na função de poder criar listas de produtos ou alimentos de acordo com sua restrição alimentar e/ou nutrientes.
 
 ## Integrantes
 
