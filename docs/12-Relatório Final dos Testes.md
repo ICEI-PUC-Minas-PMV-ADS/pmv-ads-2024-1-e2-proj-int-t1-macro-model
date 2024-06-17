@@ -87,7 +87,7 @@ Para garantir que todos os requisitos funcionais do projeto fossem atendidos, um
 | **Resultado do Teste** | Sucesso |
 | **Conclusão** | O objetivo foi alcançado. A tela de Visualizar Item exibe corretamente as informações do item e permite edição. |
 
-| **Caso de Teste** | **CT-10 – O botão Excluir Item deverá excluir o item do cartão.** |
+| **Caso de Teste** | **CT-10 – O botão Excluir Item deverá excluir o item da lista de favoritos.** |
 |:---:|:---:|
 | **Requisito Associado** | RF-010 - Verificar veracidade de ação. |
 | **Objetivo do Teste** | Verificar inserção dos dados informados. |
