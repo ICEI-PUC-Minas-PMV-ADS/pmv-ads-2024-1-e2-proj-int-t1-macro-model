@@ -1,4 +1,4 @@
-# Mostra Final
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t1-macro-model/assets/104217381/23c79d78-7dd6-45d1-b3d0-68854022630a)# Mostra Final
 
 <p>Imagine uma plataforma que não só informa, mas transforma a maneira como escolhemos nossos alimentos. Apresentamos nossa aplicação inovadora, dedicada a oferecer acesso fácil e seguro a informações nutricionais detalhadas. Para milhões com restrições alimentares, nossa ferramenta é uma necessidade, não apenas uma conveniência. Desde a validação de dados até a educação do consumidor, cada recurso é projetado para capacitar nossos usuários a fazerem escolhas informadas e seguras. Junte-se a nós na Mostra Final dos Melhores Projetos do Eixo, onde nosso compromisso com a transparência e saúde alimentar merece ser reconhecido. Vamos transformar juntos o futuro da alimentação saudável.</p>
 
@@ -17,7 +17,7 @@ Espaço para o vídeo de 1 min.
 <img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t1-macro-model/assets/104217381/8c56a02e-d717-43e1-bcd5-37456a53fae7" alt="Descrição da imagem" width="600">
 
 
-<p>Este é o problema que nossa aplicação enfrenta: garantir que cada indivíduo tenha acesso fácil e confiável a informações nutricionais precisas.
+<p>Este é o problema que nossa aplicação **não** enfrenta: garantir que cada indivíduo tenha acesso fácil e confiável a informações nutricionais precisas.
 Apresentando nossa solução: uma plataforma intuitiva que oferece detalhes completos sobre cada produto alimentício. Desde alergias comuns como glúten e lactose até preferências alimentares específicas, nosso sistema alerta e informa.</p>
 <img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t1-macro-model/assets/104217381/1997ec45-9905-42ef-9715-9a5639e80787" alt="Descrição da imagem" width="700">
 
