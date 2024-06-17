@@ -24,6 +24,9 @@ Apresentando nossa solução: uma plataforma intuitiva que oferece detalhes comp
 <p>Nosso banco de dados abrangente não só lista ingredientes, mas educa sobre nutrição e opções saudáveis. Cada usuário pode personalizar suas preferências, facilitando escolhas podendo criar suas próprias listas de produtos ou alimentos para qualquer finalidade.</p>
 <img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t1-macro-model/assets/104217381/1c400b8d-b0e0-4bd4-84a1-4a818591e759" alt="Descrição da imagem" width="700">
 
+[Slide Macro Model.pptx](https://github.com/user-attachments/files/15878243/Slide.Macro.Model.pptx)
+
+
 ---------------------------------------
 Espaço para o vídeo de 3 min.
 
