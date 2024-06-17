@@ -58,7 +58,7 @@ Para garantir que todos os requisitos funcionais do projeto fossem atendidos, um
 | **Passos** | 1. Acessar a página principal da aplicação;<br>2. Clicar no botão "Login";<br>3. Preencher os campos obrigatórios;<br>4. Clicar no botão "Login". |
 | **Critério de Êxito** | Exibir informações do usuário logado e opção de sair. |
 | **Resultado do Teste** | Sucesso |
-| **Conclusão** | O objetivo foi alcançado. Após o login, a interface exibe corretamente o nome do usuário logado e a opção de sair. |
+| **Conclusão** | O objetivo foi alcançado. Após o login, a interface exibe corretamente o nome do usuário logado e a opção de sair no canto superior direito. |
 
 | **Caso de Teste** | **CT-07 – A tela de alimentos deverá apresentar os botões: Filtrar por Nome, Maior Cal, Menor Cal.** |
 |:---:|:---:|
@@ -76,7 +76,7 @@ Para garantir que todos os requisitos funcionais do projeto fossem atendidos, um
 | **Passos** | 1. Acessar a página "Adicionar Novo Item";<br>2. Preencher os campos obrigatórios: Título do Item, Categoria, Inserir Imagem;<br>3. Clicar em "Adicionar". |
 | **Critério de Êxito** | Exigir todos os dados preenchidos. |
 | **Resultado do Teste** | Sucesso |
-| **Conclusão** | O objetivo foi alcançado. Todos os campos na tela de Adicionar Novo Item são obrigatórios e devem ser preenchidos. |
+| **Conclusão** | O objetivo foi alcançado. Todos os campos na tela de Adicionar Novo Item/Produto/Alimento são obrigatórios e devem ser preenchidos. |
 
 | **Caso de Teste** | **CT-09 – A tela de Visualizar Item permite ao usuário visualizar os campos: Imagem do item; Título do item; Categoria e permitir o mesmo editar.** |
 |:---:|:---:|
@@ -94,5 +94,5 @@ Para garantir que todos os requisitos funcionais do projeto fossem atendidos, um
 | **Passos** | 1. Acessar a página de visualização de itens;<br>2. Clicar no botão "Excluir" do item desejado. |
 | **Critério de Êxito** | Excluir o item com sucesso. |
 | **Resultado do Teste** | Sucesso |
-| **Conclusão** | O objetivo foi alcançado. O botão "Excluir Item" remove corretamente o item selecionado do banco de dados. |
+| **Conclusão** | O objetivo foi alcançado. O botão "Excluir Item" remove corretamente o item selecionado do banco de dados e somente na lista de favoritos do usuário logado. |
 
