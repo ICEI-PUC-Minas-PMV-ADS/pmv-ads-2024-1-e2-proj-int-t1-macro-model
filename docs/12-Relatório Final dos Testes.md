@@ -143,11 +143,6 @@ Para garantir que todos os requisitos funcionais do projeto fossem atendidos, um
 | **Resultado do Teste** | Sucesso |
 | **Conclusão** | O objetivo foi alcançado. O sistema se adapta a diferentes tamanhos de tela, mantendo a visibilidade e usabilidade dos elementos. |
 
-| **Caso de Teste** | **RNF-06 – Modularização** |
-|:---:|:---:|
-| **Requisito Associado** | RNF-006 - O sistema deve ser desenvolvido de forma modular. |
-| **Objetivo do Teste** | Verificar se os módulos do sistema possuem funcionalidade bem definida, coesa e com baixo acoplamento. |
-| **Passos** | 1. Para cada módulo, verificar o alinhamento de sua funcionalidade com os requisitos relacionados ao módulo.<br>2. Testar a funcionalidade dos módulos e verificar se realizam a funcionalidade esperada de forma eficaz.<br>3. Verificar se as operações do módulo estão trabalhando para um objetivo comum.<br>4. Verificar o nível de acoplamento entre os módulos e se o módulo depende de outros módulos para exercer sua funcionalidade. |
-| **Critério de Êxito** | 1. O módulo deve realizar a funcionalidade esperada de forma eficaz.
+
 
 
