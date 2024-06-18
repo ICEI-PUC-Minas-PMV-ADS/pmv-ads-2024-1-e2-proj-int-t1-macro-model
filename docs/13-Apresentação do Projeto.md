@@ -59,11 +59,11 @@ Macro Model
 
 ![19](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t1-macro-model/assets/145519272/8ed6a132-16c0-479b-a760-e5b5cb3b2207)
 
-![20](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t1-macro-model/assets/145519272/4f1a8bcf-68fe-42fa-b430-fa411d999c35)
+![new](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t1-macro-model/assets/145519272/5039d7a8-e1a0-40f4-93b1-7b20cc9246a8)
+
 
 ![21](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t1-macro-model/assets/145519272/9ceecd12-4033-4450-a6c9-4b326a1b1fa9)
 
-![22](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t1-macro-model/assets/145519272/c2f18595-2344-44f5-b452-24965e88a3a0)
 
 ![23](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t1-macro-model/assets/145519272/7003f4d2-5c6a-4f4e-b36a-baa49df7d399)
 
