@@ -11,10 +11,7 @@ Aplicação intuitiva na função de poder criar listas de produtos ou alimentos
 ## Integrantes
 
 * João Gabriel Barrozo Rocha
-* Jonathan Vaz de Avelar
-* Lafayete Queiroz Horta
 * Lucas Antonio Miranda da Silva
-* Pedro Roberto Gomes da Silva Abadia
 
 
 ## Orientador
