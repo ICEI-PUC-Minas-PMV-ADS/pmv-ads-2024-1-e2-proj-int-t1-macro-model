@@ -1,8 +1,10 @@
 # Apresentação
 
-[Slide Macro Model.pptx](https://github.com/user-attachments/files/15811546/Slide.Macro.Model.pptx)
+Bem-vindo à nossa apresentação sobre Macro Model. Este slide foi elaborado para proporcionar uma visão abrangente e informativa sobre se alimentar bem. Nele, você encontrará dados relevantes, análises detalhadas e insights valiosos que ajudarão a entender melhor os principais pontos abordados.
 
-Conjunto de slides em um arquivo PowerPoint ou PDF com a apresentação do projeto contemplando todos os itens trabalhados nos demais artefatos.
+Clique no link abaixo para acessar o slide completo e explorar todo o conteúdo preparado especialmente para você.
+
+[Slide Macro Model.pptx](https://github.com/user-attachments/files/15811546/Slide.Macro.Model.pptx)
 
 ## Título do Projeto
 
