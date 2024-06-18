@@ -2,8 +2,6 @@
 
 [Slide Macro Model.pptx](https://github.com/user-attachments/files/15811546/Slide.Macro.Model.pptx)
 
-<span style="color:red">Pré-requisitos: Todos os demais artefatos</span>
-
 Conjunto de slides em um arquivo PowerPoint ou PDF com a apresentação do projeto contemplando todos os itens trabalhados nos demais artefatos.
 
 ## Título do Projeto
