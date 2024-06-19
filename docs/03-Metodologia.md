@@ -21,8 +21,8 @@ execução das tarefas do projeto.
 A equipe utiliza o Scrum como base para definição do processo de desenvolvimento.
 -	Product Owner: Lucas Antonio Miranda da Silva
 -	Scrum Master: João Gabriel Barrozo Rocha
--	Equipe de Desenvolvimento: , Jonathan Vaz de Avelar, Lucas Antonio Miranda da Silva, Pedro Roberto Gomes da Silva Abadia, Lafayete Queiroz Horta, João Gabriel Barrozo Rocha
--	Equipe de Design: Lafayete Queiroz Horta, Lucas Antonio Miranda da Silva
+-	Equipe de Desenvolvimento: Lucas Antonio Miranda da Silva.
+-	Equipe de Design: João Gabriel Barrozo Rocha
 
 ### Processo
 Back-log - https://github.com/orgs/ICEI-PUC-Minas-PMV-ADS/projects/871/views/1
@@ -38,6 +38,8 @@ As ferramentas empregadas no projeto são:
 - `Gerenciamento do projeto`  GitHub Projects
 - `Ferramenta de desenho da tela`  MarvelApp para protótipo de wireframes - Interface intuitiva e amigável.
 - `Ferramenta de criação de diagramas`  Lucichart para diagrama de classe - Optamos pela indicação da faculdade.
+- `Ferramenta de criação da apresentação` OBS Studio e Power Point.
 
-O GitHub foi escolhido como repositório para o projeto, uma vez que oferece gestão de projectos e está alinhado com as tarefas da metodologia Scrum. O Visual Studio Community 2022 foi escolhido pela sua integração com sistemas de controlo de versões, facilitando a gestão do projeto e a atualização das alterações. O Discord e Whatsapp foi escolhido pela facilidade de comunicação e colaboração. O Figma foi escolhido pelos seus desenhos de interface de utilizador interactivos e de alta qualidade, cruciais para o desenvolvimento de software centrado no utilizador. Por último, o Lucidchart foi escolhido pela sua melhor estrutura e fluxo de diagramas.
+O GitHub foi escolhido como repositório para o projeto, uma vez que oferece gestão de projectos e está alinhado com as tarefas da metodologia Scrum. O Visual Studio Community 2022 foi escolhido pela sua integração com sistemas de controlo de versões, facilitando a gestão do projeto e a atualização das alterações. O Discord e Whatsapp foi escolhido pela facilidade de comunicação e colaboração. O Figma foi escolhido pelos seus desenhos de interface de utilizador interactivos e de alta qualidade, cruciais para o desenvolvimento de software centrado no utilizador. Por último, o Lucidchart foi escolhido pela sua melhor estrutura e fluxo de diagramas. OBS Studio foi escolhido pela quantidade de recursos que possibilitou fazer a gravação do vídeo mesmo estando longe dos outros integrantes do grupo.
+Power Point foi escolhido pela praticidade de confecção de slides para apresentação.
 Essas ferramentas foram empregadas no desenvolvimento do projeto para maximizar a eficiência, a colaboração e a qualidade do trabalho produzido.
