@@ -1,29 +1,19 @@
 message: Please cite this software using these metadata.
-title:
+title: Macro Model
 authors:
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
+  - family-names: Antonio Miranda da Silva
+    given-names: Lucas
+  - family-names: Gabriel Barrozo Rocha
+    given-names: João
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
-  - name-suffix: Professor
-    affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: Ribeiro da Mota
+    given-names: Rosilane
 keywords:
-  - 
-  - 
-repository-code: 
+  - Macro Model
+  - Nutricional
+  - Alimentos
+  - Produtos
+repository-code: https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t1-macro-model
 version: 1.0.0
-date-released: 2023-10-31
+date-released: 202-06-18
