@@ -1,6 +1,6 @@
 # Template Padrão da Aplicação
 
-https://www.macromodel.azurewebsites.net
+https://macromodel.azurewebsites.net
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t1-macro-model/assets/104217381/0ba172ff-6b84-47cf-b4a2-22e66efd2322)
 
